@@ -1,7 +1,7 @@
 # Controle Estoque
-## Projeto de Conclusão do Curso de Desenvolvimento de Software, ministrado pela **PUC-PR**
+## Projeto final do curso de Desenvolvimento de Software, ministrado pela **PUC-PR**
 O Projeto é desenvolvido 100% em **Python**, aplicando os conhecimentos adquiridos durante o curso.
-**Detalhes do Projeto aplicadas:**
+**Detalhes do projeto:**
  - Paradigma **Orientado a Objetos;**
  - Banco de Dados **Oracle**;
  - ORM **SQLAchemy**;
