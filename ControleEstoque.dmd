@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ControleEstoque" id="F81CA56E-AF35-6B0D-8FB4-DE1D4861A5DF" version="3.5">
-<createdBy>erasus</createdBy>
-<createdTime>2024-02-23 23:03:48 UTC</createdTime>
-<ownerDesignName>ControleEstoque</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>F81CA56E-AF35-6B0D-8FB4-DE1D4861A5DF</designId>
-</OSDM_Design>
