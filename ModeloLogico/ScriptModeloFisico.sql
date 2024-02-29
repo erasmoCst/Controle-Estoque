@@ -223,4 +223,74 @@ ALTER TABLE CTL_ESTOQUE.transacao
         REFERENCES CTL_ESTOQUE.produto_estoque ( cd_estoque,
                                      cd_produto );
 
+CREATE SEQUENCE ctl_estoque.sq_cd_municipio START WITH 1 NOCACHE ORDER;
 
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_municipio BEFORE
+    INSERT ON ctl_estoque.municipio
+    FOR EACH ROW
+    WHEN ( new.cd_municipio IS NULL )
+BEGIN
+    :new.cd_municipio := ctl_estoque.sq_cd_municipio.nextval;
+END;
+
+CREATE SEQUENCE ctl_estoque.sq_cd_endereco START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_endereco BEFORE
+    INSERT ON ctl_estoque.endereco
+    FOR EACH ROW
+    WHEN ( new.cd_endereco IS NULL )
+BEGIN
+    :new.cd_endereco := ctl_estoque.sq_cd_endereco.nextval;
+END;
+
+
+ SEQUENCE ctl_estoque.sq_cd_pessoa START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_pessoa BEFORE
+    INSERT ON ctl_estoque.pessoa
+    FOR EACH ROW
+    WHEN ( new.cd_pessoa IS NULL )
+BEGIN
+    :new.cd_pessoa := ctl_estoque.sq_cd_pessoa.nextval;
+END;
+
+CREATE SEQUENCE ctl_estoque.sq_cd_pedido START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_pedido BEFORE
+    INSERT ON ctl_estoque.pedido
+    FOR EACH ROW
+    WHEN ( new.cd_pedido IS NULL )
+BEGIN
+    :new.cd_pedido := ctl_estoque.sq_cd_pedido.nextval;
+END;
+
+CREATE SEQUENCE ctl_estoque.sq_cd_estoque START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_estoque BEFORE
+    INSERT ON ctl_estoque.estoque
+    FOR EACH ROW
+    WHEN ( new.cd_estoque IS NULL )
+BEGIN
+    :new.cd_estoque := ctl_estoque.sq_.nextval;
+END;
+
+CREATE SEQUENCE ctl_estoque.sq_cd_produto START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_produto BEFORE
+    INSERT ON ctl_estoque.produto
+    FOR EACH ROW
+    WHEN ( new.cd_produto IS NULL )
+BEGIN
+    :new.cd_produto := ctl_estoque.sq_cd_produto.nextval;
+END;
+
+
+CREATE SEQUENCE ctl_estoque.sq_cd_transacao START WITH 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER ctl_estoque.trg_cd_transacao BEFORE
+    INSERT ON ctl_estoque.transacao
+    FOR EACH ROW
+    WHEN ( new.cd_transacao IS NULL )
+BEGIN
+    :new.cd_transacao := ctl_estoque.sq_cd_transacao.nextval;
+END;
