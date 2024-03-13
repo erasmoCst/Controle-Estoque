@@ -2,8 +2,9 @@
 from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
 
-from models.DBClasses import Municipio
+from models.DBClasses import Endereco, Municipio, Pessoa, Produto
 from config.DBConnection import *
+from sqlalchemy.orm import joinedload
 
 
 
@@ -63,8 +64,17 @@ def registrar_pedido():
     Button(janela_reg_pedido, text="Continuar com o pedido", command=agendamento_entrega).place(x=10, y=130, width=150, height=30)
 
 def agendamento_entrega():
+    codProduto = codigo_prod_entry.get()
+    qtdProduto = quantidade_prod_entry.get()
+    idCliente  = id_cliente_entry.get()
+    ##SELECT * FROM PESSOA WHERE CD_PESSOA = 10
+    # Inplementar a função para abstrair as informações do resumo, nome do cliente, produto, valor, data e hora.
+    cliente = session.query(Pessoa).filter_by(cd_pessoa = idCliente).one()
+    produto = session.query(Produto).filter_by(cd_produto = codProduto).one()
+    cidade = session.query(Endereco).filter_by(cd_endereco = cliente.cd_municipio).one()
+    print(cliente, produto, qtdProduto)
     global dia_entrega_entry, hora_entrega_entry
-    
+
     # Obter o código do produto, quantidade e ID do cliente inseridos pelo usuário
     codigo_prod = codigo_prod_entry.get()
     quantidade_prod = quantidade_prod_entry.get()
@@ -76,20 +86,24 @@ def agendamento_entrega():
     janela_agendamento_entrega.geometry("400x300")
     janela_agendamento_entrega.configure(background="#dde")
     
-    # Campos para dia e hora de entrega
-    Label(janela_agendamento_entrega, text="Dia de Entrega:", background="#dde", anchor="w").place(x=10, y=30, width=110, height=20)
-    dia_entrega_entry = Entry(janela_agendamento_entrega)
-    dia_entrega_entry.place(x=150, y=30, width=110, height=20)
+
+    Label(janela_agendamento_entrega, text=f"Cliente: {cidade.nm_logradouro}", background="#dde", anchor="w").place(x=10, y=20, width=110, height=20)
     
-    Label(janela_agendamento_entrega, text="Hora de Entrega:", background="#dde", anchor="w").place(x=10, y=60, width=110, height=20)
+    # Campos para dia e hora de entrega
+    Label(janela_agendamento_entrega, text="Dia de Entrega:", background="#dde", anchor="w").place(x=10, y=60, width=110, height=20)
+    dia_entrega_entry = Entry(janela_agendamento_entrega)
+    dia_entrega_entry.place(x=150, y=60, width=110, height=20)
+    
+    Label(janela_agendamento_entrega, text="Hora de Entrega:", background="#dde", anchor="w").place(x=10, y=90, width=110, height=20)
     hora_entrega_entry = Entry(janela_agendamento_entrega)
-    hora_entrega_entry.place(x=150, y=60, width=110, height=20)
+    hora_entrega_entry.place(x=150, y=90, width=110, height=20)
     
     # Botões para exibir o resumo do pedido e finalizar pedido
-    Button(janela_agendamento_entrega, text="Mostrar Resumo do Pedido", command=resumo_pedido).place(x=10, y=100, width=150, height=30)
-    Button(janela_agendamento_entrega, text="Finalizar Pedido", command=finalizar_pedido).place(x=180, y=100, width=150, height=30)
+    Button(janela_agendamento_entrega, text="Mostrar Resumo do Pedido", command=resumo_pedido).place(x=10, y=180, width=150, height=30)
+    Button(janela_agendamento_entrega, text="Finalizar Pedido", command=finalizar_pedido).place(x=180, y=180, width=150, height=30)
 
-def resumo_pedido():
+def resumo_pedido(param1, param2):
+    print(param1, param2)
     # Inplementar a função para abstrair as informações do resumo, nome do cliente, produto, valor, data e hora.
     municipios = session.query(Municipio).all()
     for municipio in municipios:
