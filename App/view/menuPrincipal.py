@@ -1,3 +1,4 @@
+from view.gestao.cadastroPessoa import cadastro_pessoa
 from view.atendimento.registraPedido import *
 from view.atendimento.consultaPedido import *
 from tkinter import *
@@ -6,7 +7,7 @@ from tkinter import Tk
 #Criação da Janela PRINCIPAL = app
 app = Tk()
 app.title("App Controle de Estoque")
-app.geometry("635x300")
+app.geometry("700x500")
 app.configure(background="#dde")
 
 ## Menu ##
@@ -36,7 +37,7 @@ Barra_menu.add_cascade(label="Gestão de Produtos",menu=gestao_prod)
 
 # Gestão de clientes 
 gestao_cliente = Menu(Barra_menu, tearoff=0)
-gestao_cliente.add_command(label="Cadastro de Cliente",command= None)
+gestao_cliente.add_command(label="Cadastro de Cliente",command= cadastro_pessoa)
 gestao_cliente.add_command(label="Atualização de Cliente",command= None)
 gestao_cliente.add_command(label="Remoção de Cliente",command= None)
 Barra_menu.add_cascade(label="Gestão de Clientes",menu=gestao_cliente)
@@ -47,7 +48,6 @@ gestao_fornecedor.add_command(label="Cadastro de Fornecedor",command= None)
 gestao_fornecedor.add_command(label="Atualização de Fornecedor",command= None)
 gestao_fornecedor.add_command(label="Remoção de Fornecedor",command= None)
 Barra_menu.add_cascade(label="Gestão de Fornecedores",menu=gestao_fornecedor)
-
 
 # Sistema - Fechar
 menu_fechar = Menu(Barra_menu, tearoff=0)

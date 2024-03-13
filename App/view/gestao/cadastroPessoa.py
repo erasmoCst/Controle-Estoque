@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
-from App.models.DBClasses import Pessoa
+from models.DBClasses import Pessoa
 
 from config.DBConnection import *
 from tkinter.messagebox import showinfo
@@ -13,7 +13,7 @@ def cadastro_pessoa():
     # Função de cadastro de pessoa
     cadastro_pessoa = Toplevel()
     cadastro_pessoa.title("Cadastro de Pessoa")
-    cadastro_pessoa.geometry("400x300")
+    cadastro_pessoa.geometry("700x500")
     cadastro_pessoa.configure(background="#dde")
 
     # Campo Nome
@@ -22,10 +22,23 @@ def cadastro_pessoa():
     nome_entry.place(x=150, y=30, width=110, height=20)
     
     #Campo Endereço
-    Label(cadastro_pessoa, text="Endereço:", background="#dde", anchor="w").place(x=10, y=60, width=110, height=20)
+    Label(cadastro_pessoa, text="Dados do Endereço:", background="#dde", anchor="w").grid(row=0, column=0, columnspan=3, sticky="w", padx=10, pady=10)
+
+    # Criar um Label e Entry para "Logradouro"
+    Label(cadastro_pessoa, background="#dde", text="Logradouro:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
     endereco_entry = Entry(cadastro_pessoa)
-    endereco_entry.place(x=150, y=60, width=110, height=20)
-    
+    endereco_entry.grid(row=1, column=1, columnspan=4, padx=10, pady=5, sticky="w")
+
+    # Criar um Label e Entry para "Número"
+    Label(cadastro_pessoa, background="#dde", text="Número:").grid(row=2, column=0, padx=10, pady=5, sticky="w")
+    numero_endereco_entry = Entry(cadastro_pessoa)  # Definir o tamanho do Entry para 10 caracteres
+    numero_endereco_entry.grid(row=2, column=1, padx=10, pady=5)
+
+    # Criar um Label e Entry para "Complemento"
+    Label(cadastro_pessoa, background="#dde", text="Complemento:").grid(row=2, column=2, padx=10, pady=5, sticky="w")
+    complemento_endereco_entry = Entry(cadastro_pessoa)  # Definir o tamanho do Entry para 10 caracteres
+    complemento_endereco_entry.grid(row=2, column=3, padx=10, pady=5)
+
     #Campo Telefone
     Label(cadastro_pessoa, text="Telefone:", background="#dde", anchor="w").place(x=10, y=90, width=110, height=20)
     telefone_entry = Entry(cadastro_pessoa)

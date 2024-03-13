@@ -1,9 +1,13 @@
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
 from sqlalchemy import INTEGER, NUMERIC, SMALLINT, VARCHAR, CHAR, DATE, NUMERIC, ForeignKey, func
 from datetime import datetime
+from config.DBConnection import * 
 
 class Base(DeclarativeBase):
-    pass
+    @classmethod
+    def add(cls):
+        session.add(cls)
+        session.flush()
  
 class Municipio (Base):
     __tablename__ = 'MUNICIPIO'
@@ -27,6 +31,13 @@ class Endereco (Base):
     nr_logradouro: Mapped[str] = mapped_column(VARCHAR(5), nullable=False)
     cd_municipio: Mapped[int] = mapped_column(SMALLINT, ForeignKey(Municipio.cd_municipio), nullable=False)
 
+    @classmethod
+    def CadastraEndereco(self, nr_cep, nm_logradouro, nr_logradouro, cd_municipio):
+        novoEndereco = Endereco(nr_cep=nr_cep, nm_logradouro=nm_logradouro, nr_logradouro=nr_logradouro, cd_municipio=cd_municipio)
+        session.add(novoEndereco)
+        session.flush()
+        return novoEndereco
+
 class Pessoa (Base):
     __tablename__ = 'PESSOA'
     cd_pessoa: Mapped[int] = mapped_column(INTEGER, nullable=False, primary_key=True)
@@ -34,6 +45,9 @@ class Pessoa (Base):
     cd_endereco: Mapped[int] = mapped_column(INTEGER, ForeignKey(Endereco.cd_endereco), nullable=False) 
     nr_telefone: Mapped[str] = mapped_column(VARCHAR(15), nullable=False)
     nm_email: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
+    
+    def CadastraPessoa():
+        pass
 
 class Cliente (Base):
     __tablename__ = 'CLIENTE'
