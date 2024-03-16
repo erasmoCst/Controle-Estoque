@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="60AC8DF3-40A2-D8F0-2E07-3E310E107465" name="PRODUTO_PEDIDO">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:32:13 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_PEDIDO" id="FCE98F4F-A3BB-D28B-F4FC-49D611B408F0">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:32:56 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F7672E97-D2F6-CC9F-67F0-E939443E9135" referredColumn="DA61DBFD-ECFC-04B5-64CF-09B1A4AAA08F"/>
+</associations>
+</Column>
+<Column name="CD_PRODUTO" id="4F9D467C-64CE-2AB1-93BA-F7541A2BD632">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:32:56 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8794980B-FB0F-4700-B00E-DD8C4E40E087" referredColumn="56FCE650-2C20-4EAF-7D73-19B02C6C1CC6"/>
+</associations>
+</Column>
+<Column name="QT_PRODUTO" id="D926F7A7-BA16-7B7E-A8C3-1FE9BF669C74">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:32:56 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D019FAC0-503D-5825-51E5-463BD009D186" name="PRODUTO_PEDIDO_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:32:56 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FCE98F4F-A3BB-D28B-F4FC-49D611B408F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="969DBAA2-0264-7E3B-D2DA-17694125DD2E" name="PRODUTO_PEDIDO_PEDIDO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:33:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FCE98F4F-A3BB-D28B-F4FC-49D611B408F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5B233DF-74C8-2699-AE14-E5CCAD72967B" name="PRODUTO_PEDIDO_PRODUTO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:33:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F9D467C-64CE-2AB1-93BA-F7541A2BD632"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

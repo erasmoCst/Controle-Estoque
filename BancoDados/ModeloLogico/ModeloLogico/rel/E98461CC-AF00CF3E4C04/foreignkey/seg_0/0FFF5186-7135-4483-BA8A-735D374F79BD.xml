@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0FFF5186-7135-4483-BA8A-735D374F79BD" containerWithKeyObject="463B369D-96D1-D4ED-1B6A-A57B37FB7EF8" localFKIndex="72AB64F7-86CB-E2FF-E69D-7401A9B29AE0" name="TRANSACAO_PEDIDO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:36:22 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<referredTableLongName>PEDIDO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>747AAC4B-7B14-1CA4-33AC-C388E5377622</referredTableID>
+<keyObject>3C49F928-8D58-AF7C-8795-9144C05F72E0</keyObject>
+<referredKeyID>3C49F928-8D58-AF7C-8795-9144C05F72E0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CD_PEDIDO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorColumn>DA61DBFD-ECFC-04B5-64CF-09B1A4AAA08F</discriminatorColumn>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

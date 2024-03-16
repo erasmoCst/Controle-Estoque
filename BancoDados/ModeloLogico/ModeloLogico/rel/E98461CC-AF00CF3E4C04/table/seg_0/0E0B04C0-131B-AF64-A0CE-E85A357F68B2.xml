@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E0B04C0-131B-AF64-A0CE-E85A357F68B2" name="PRODUTO_ESTOQUE">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:39:44 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_PRODUTO" id="4B11A667-83EA-6A0C-02CD-CBA93218642C">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0FDD0AEC-E0B4-AD3C-163E-E601869791A2" referredColumn="56FCE650-2C20-4EAF-7D73-19B02C6C1CC6"/>
+</associations>
+</Column>
+<Column name="CD_ESTOQUE" id="3CFDEE49-EA2A-4CD8-94C5-79C99FA4EB5F">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FDC5DBEF-641C-0F06-5362-402C35F3F0F1" referredColumn="6939D4EA-9313-237E-9B75-F526AADD4477"/>
+</associations>
+</Column>
+<Column name="NR_LOTE" id="59108860-8E0A-70E5-560E-3F2FF6C607B3">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QT_PRODUTOESTOQUE" id="027ECA30-C0DC-4D5F-9298-D114E82FC366">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_VALIDADE" id="D3C84C78-D912-3A03-946D-4AA81395A238">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_PRODUTOESTOQUE" id="03AA7D94-0AD3-E143-E26B-71D4D79AF806">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8872982C-916A-0936-2EA1-593B6D75CAAE" name="PRODUTO_ESTOQUE_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:41:48 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3CFDEE49-EA2A-4CD8-94C5-79C99FA4EB5F"/>
+<colUsage columnID="4B11A667-83EA-6A0C-02CD-CBA93218642C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="561C3EF7-B03F-0F75-6F44-BEB25C24E823" name="PRODUTO_ESTOQUE_PRODUTO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:42:05 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4B11A667-83EA-6A0C-02CD-CBA93218642C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="34561455-E6B4-9D65-D5EF-392DC4751E32" name="PRODUTO_ESTOQUE_ESTOQUE_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:42:14 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3CFDEE49-EA2A-4CD8-94C5-79C99FA4EB5F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

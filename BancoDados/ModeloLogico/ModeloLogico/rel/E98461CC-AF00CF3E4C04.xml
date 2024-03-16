@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="ControleEstoque" id="E98461CC-2A9E-A8C8-3E7D-AF00CF3E4C04" mainViewID="1D900AE5-74E5-EB3A-3571-C11FAAE3C196">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:53:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>01F6E6D1-21D0-CFBD-ABDD-3988D1813575</selectedRDBMSSite>
+</relationalModel>

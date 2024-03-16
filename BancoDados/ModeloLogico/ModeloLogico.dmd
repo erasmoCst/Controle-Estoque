@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ModeloLogico" id="1B2820C3-FE83-9EF0-60A7-FBB627C8AB0A" version="3.5">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:53:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1B2820C3-FE83-9EF0-60A7-FBB627C8AB0A</designId>
+</OSDM_Design>

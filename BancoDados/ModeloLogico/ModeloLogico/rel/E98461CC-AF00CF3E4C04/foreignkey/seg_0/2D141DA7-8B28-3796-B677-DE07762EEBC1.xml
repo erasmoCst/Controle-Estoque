@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2D141DA7-8B28-3796-B677-DE07762EEBC1" containerWithKeyObject="E69680B0-5C7F-F059-3F95-FEE4725D3B73" localFKIndex="8CC189C7-3387-062E-6371-1EC948020190" name="ENDERECO_MUNICIPIO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:24:37 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<referredTableLongName>MUNICIPIO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>14F7FEBA-F94A-F77B-86D7-1D021C170218</referredTableID>
+<keyObject>7F4744A7-FB58-C5B4-E08E-7EE8AC5B6F0E</keyObject>
+<referredKeyID>7F4744A7-FB58-C5B4-E08E-7EE8AC5B6F0E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CD_MUNICIPIO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorColumn>322003FA-ACC8-801A-9302-3DA0FC5D2C05</discriminatorColumn>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

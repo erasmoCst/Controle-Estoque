@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="15173D25-35A1-7734-6E43-F36F7B597DF1" name="CLIENTE">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:54:41 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_CLIENTE" id="17838099-03F0-F847-61FA-91CE17A6B3AB">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7304FD65-B7CC-5DC2-2A92-3354C1205015" referredColumn="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9"/>
+</associations>
+</Column>
+<Column name="NR_CPF" id="2CB8AD14-CCCD-5C5C-1EA6-8CDA5DE21001">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>11 CHAR</dataTypeSize>
+<ownDataTypeParameters>11 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_NASCIMENTO" id="0AB12295-1C38-9E84-D7A9-55ADE972A0F0">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TP_GENERO" id="03235A09-6C6F-7A09-6035-DF6727AF9055">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="189BAEFE-7D17-3249-EDD2-3E773826D9C0" name="CLIENTE_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="17838099-03F0-F847-61FA-91CE17A6B3AB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2B554A04-76C2-E0A8-5DA0-10E96BDE6F8D" name="CLIENTE_CPF_UN">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2CB8AD14-CCCD-5C5C-1EA6-8CDA5DE21001"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="600EA084-E3E0-DCA6-E1B4-6CDC666AB6B4" name="CLIENTE_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="17838099-03F0-F847-61FA-91CE17A6B3AB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9197E293-DE96-BBD9-8A63-66848204FA6E" name="CLIENTE_CPF_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:24 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2CB8AD14-CCCD-5C5C-1EA6-8CDA5DE21001"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EC614D7E-C4FC-2496-78FB-7CDD280E0055" name="CLIENTE_PESSOA_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:55 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="17838099-03F0-F847-61FA-91CE17A6B3AB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

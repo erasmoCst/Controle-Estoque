@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="00C689AC-7BD3-A573-A5E5-7B9E9718450C" name="PESSOA">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:54:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_PESSOA" id="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NM_PESSOA" id="AF532974-04C0-9C9A-D86B-BD2EF701CE03">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CD_ENDERECO" id="1F3590CF-9616-70D2-0D59-6F9D0CF94A7F">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CBC1A3E9-9AF7-635A-C00F-42084DC19AA2" referredColumn="E7CBE0F2-A54D-8B03-B2E3-913E8F664709"/>
+</associations>
+</Column>
+<Column name="NR_TELEFONE" id="2BDCB373-3DA2-45CB-81E2-BE71F8EF52F6">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 CHAR</dataTypeSize>
+<ownDataTypeParameters>15 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NM_EMAIL" id="8EA0FBE9-7384-9878-94C6-73F459DE700E">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8F832B50-938C-D7F5-2B59-5E296D32F08C" name="PESSOA_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:00:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32E25E51-E9E4-4395-BF84-CB5D91491575" name="PESSOA_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:43 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3CEF9EEA-27BD-8241-F45B-35C6BBCB01BD" name="PESSOA_ENDERECO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:27:02 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F3590CF-9616-70D2-0D59-6F9D0CF94A7F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

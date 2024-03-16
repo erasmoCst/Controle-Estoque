@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FAF00DD4-D07F-B0DD-3459-6956E3BB8D51" name="ESTOQUE">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:54:50 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_ESTOQUE" id="6939D4EA-9313-237E-9B75-F526AADD4477">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_RUA" id="3D2AA571-8EB5-C662-970E-B26C4F020CF2">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_PRATELEITA" id="8CD68479-C6CC-3F63-AE65-3D6AF5B683BF">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_SEQUENCIA" id="54B12358-77C8-5E93-F6BF-657011B72025">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="698EEDDF-45A7-961B-B350-F234F6D6176F" name="ESTOQUE_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:18 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6939D4EA-9313-237E-9B75-F526AADD4477"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23F44DAE-959E-1762-828E-6A4CD4C73902" name="ESTOQUE_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:27 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6939D4EA-9313-237E-9B75-F526AADD4477"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

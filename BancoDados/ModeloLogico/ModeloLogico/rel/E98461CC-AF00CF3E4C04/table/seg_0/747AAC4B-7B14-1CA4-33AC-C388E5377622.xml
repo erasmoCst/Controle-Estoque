@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="747AAC4B-7B14-1CA4-33AC-C388E5377622" name="PEDIDO">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:55:03 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_PEDIDO" id="DA61DBFD-ECFC-04B5-64CF-09B1A4AAA08F">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:11 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CD_PESSOA" id="A11A13F6-B0B1-250F-F1BE-11FB91CDD600">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:30:31 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AF010E93-F598-1862-5232-A62D6C3AAEE2" referredColumn="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9"/>
+</associations>
+</Column>
+<Column name="TP_PEDIDO" id="C749CD16-BE72-459E-816E-238976DBBC6A">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:11 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_PEDIDO" id="CACC609F-28EC-7E52-51B9-169A6E3DC922">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:11 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_ENTREGA" id="56BFAC4E-8226-0CCA-E7A6-6637450671C8">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:43 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3C49F928-8D58-AF7C-8795-9144C05F72E0" name="PEDIDO_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:11 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA61DBFD-ECFC-04B5-64CF-09B1A4AAA08F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0972B59F-9357-A6B5-EB2D-E8E5A6658A81" name="PEDIDO_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:29:43 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA61DBFD-ECFC-04B5-64CF-09B1A4AAA08F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6A888BC3-4116-A732-614F-F27CEC75569C" name="PEDIDO_PESSOA_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:30:34 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A11A13F6-B0B1-250F-F1BE-11FB91CDD600"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

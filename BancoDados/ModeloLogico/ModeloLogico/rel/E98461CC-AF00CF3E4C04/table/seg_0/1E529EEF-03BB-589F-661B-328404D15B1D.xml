@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1E529EEF-03BB-589F-661B-328404D15B1D" name="PRODUTO">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:54:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_PRODUTO" id="56FCE650-2C20-4EAF-7D73-19B02C6C1CC6">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:38 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NM_PRODUTO" id="168483CC-2256-9440-C440-D131DE2E3FBF">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:38 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DS_PRODUTO" id="AA9BC90A-AB05-FBF1-4370-2F8155B97D74">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:38 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 CHAR</dataTypeSize>
+<ownDataTypeParameters>500 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TP_EMBALAGEMPRODUTO" id="35C6F993-2310-E770-A9A4-D41C87C01352">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:38 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C62E9DE6-D440-2AF4-D6F2-6E1DD3534CC9" name="PRODUTO_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:38 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="56FCE650-2C20-4EAF-7D73-19B02C6C1CC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FA08EDE1-1128-E2EB-5DAA-4C282D389005" name="PRODUTO_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:58:51 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="56FCE650-2C20-4EAF-7D73-19B02C6C1CC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

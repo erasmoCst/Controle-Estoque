@@ -2,9 +2,11 @@ from datetime import datetime
 from config.DBConnection import session
 from models.DBClasses import Municipio, Cliente, Endereco, Pessoa
 
-def cadastrar_cliente():
-    # from view.menuPrincipal import *
-    pass
+def cadastrar_cliente(dados_cliente, dados_endereco, dados_pessoa):
+    print(dados_cliente, dados_endereco, dados_pessoa)
+
+    print(Cliente.verifica_CPF_existe(dados_cliente['nr_cpf']))
+    #pass
 
 
 # ## Cadastro de Cliente

@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E69680B0-5C7F-F059-3F95-FEE4725D3B73" name="ENDERECO">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:21:21 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_ENDERECO" id="E7CBE0F2-A54D-8B03-B2E3-913E8F664709">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_CEP" id="FA808BBE-DEA7-9A14-35D2-FDF781864F60">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>8 CHAR</dataTypeSize>
+<ownDataTypeParameters>8 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NM_LOGRADOURO" id="1011CBDD-6EC2-9C1E-B6E5-D72497358A96">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NR_LOGRADOURO" id="975166CF-64D7-AD59-F210-3FD4B65E36A0">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<ownDataTypeParameters>5 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CD_MUNICIPIO" id="6C2F1ADC-351E-08EF-C78B-7BAACFF38268">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2D141DA7-8B28-3796-B677-DE07762EEBC1" referredColumn="322003FA-ACC8-801A-9302-3DA0FC5D2C05"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AA32F685-E739-2BB0-F8A0-253CCBCA56C7" name="ENDERECO_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:23:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7CBE0F2-A54D-8B03-B2E3-913E8F664709"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="06B0D724-F6A3-711E-34E6-264167FAEFCB" name="ENDERECO_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:38:51 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7CBE0F2-A54D-8B03-B2E3-913E8F664709"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8CC189C7-3387-062E-6371-1EC948020190" name="ENDERECO_MUNICIPIO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:24:37 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C2F1ADC-351E-08EF-C78B-7BAACFF38268"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

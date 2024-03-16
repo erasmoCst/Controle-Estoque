@@ -5,6 +5,11 @@ from controller.cadastrarPessoa import *
 from config.DBConnection import *
 
 #FUNCÕES DE "Cadastro de Cliente"
+dados_cadastrais = {
+    'dados_pessoa': {},
+    'dados_cliente': {},
+    'dados_endereco': {},
+}
 
 def cadastro_cliente():
     # Função de cadastro de clientes
@@ -12,6 +17,7 @@ def cadastro_cliente():
     cadastro_cliente.title("Cadastro de Cliente")
     cadastro_cliente.geometry("700x500")
     cadastro_cliente.configure(background="#dde")
+
 
     ## Dados Pessoais
     Label(cadastro_cliente, text=" -- Dados Pessoais --", background="#dde", anchor="w").grid(row=0, column=0, sticky="w", padx=10, pady=10)
@@ -31,12 +37,14 @@ def cadastro_cliente():
     nr_cpf_entry = Entry(cadastro_cliente)
     nr_cpf_entry.grid(row=2, column=3)
 
+    # Gênero
     Label(cadastro_cliente, text="Gênero:", background="#dde", anchor="w").grid(row=3, column=0, sticky="w", padx=10)
     tp_genero_entry = StringVar(cadastro_cliente)
     tp_genero_entry.set("")
     tp_genero_options = ["","Masculino", "Feminino", "Outro"]
     tp_genero_dropdown = OptionMenu(cadastro_cliente, tp_genero_entry, *tp_genero_options)
     tp_genero_dropdown.grid(row=3, column=1, sticky="w")
+
 
     ## Dados do Contato
     Label(cadastro_cliente, text=" -- Dados de Contato --", background="#dde", anchor="w").grid(row=4, column=0,  sticky="w", padx=10, pady=10)
@@ -90,10 +98,22 @@ def cadastro_cliente():
     nm_pais_entry = Entry(cadastro_cliente)
     nm_pais_entry.grid(row=11, column=3)
     
-    #dados_pessoa = Pessoa(nm_cliente=nm_cliente_entry, nr_telefone=nr_telefone_entry, nm_email=nm_email_entry)
-    #dados_cliente = Cliente(nr_cpf=nr_cpf_entry, dt_nascimento=dt_nascimento_entry, tp_genero=tp_genero_entry)
-    #dados_endereco = Endereco(nr_cep=nr_cep_entry, nm_logradouro=nm_logradouro_entry, nr_endereco=nr_endereco_entry, ds_complemento=ds_complemento_entry,)
     
-    submit_button = Button(cadastro_cliente, text="Cadastrar Cliente")
-    submit_button.grid(row=13, column=1, columnspan=2, pady=20, sticky="ew")
-    
+    submit_button = Button(cadastro_cliente, text="Cadastrar Cliente",
+                           command=lambda: cadastrar_cliente(
+                                           dados_cliente = {'nr_cpf':nr_cpf_entry.get(),
+                                                            'dt_nascimento':dt_nascimento_entry.get(),
+                                                            'tp_genero':tp_genero_entry.get()},
+                                           dados_endereco = {'nm_cliente': nm_cliente_entry.get(),
+                                                             'nr_telefone': nr_telefone_entry.get(),
+                                                             'nm_email': nm_email_entry.get()},
+                                           dados_pessoa = {'nr_cep': nr_cep_entry.get(),
+                                                           'nm_logradouro': nm_logradouro_entry.get(),
+                                                           'nr_endereco': nr_endereco_entry.get(),
+                                                           'ds_complemento': ds_complemento_entry.get(),
+                                                           'nm_municipio': nm_cidade_entry.get(),
+                                                           'nm_estado': nm_estado_entry.get(),
+                                                           'nm_pais': nm_pais_entry.get()}))
+    submit_button.grid(row=13,column=1, columnspan=2, pady=20, sticky="ew")
+  
+

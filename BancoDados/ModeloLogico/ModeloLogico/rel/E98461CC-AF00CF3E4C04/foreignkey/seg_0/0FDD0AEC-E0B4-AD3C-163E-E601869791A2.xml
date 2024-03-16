@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0FDD0AEC-E0B4-AD3C-163E-E601869791A2" containerWithKeyObject="0E0B04C0-131B-AF64-A0CE-E85A357F68B2" localFKIndex="561C3EF7-B03F-0F75-6F44-BEB25C24E823" name="PRODUTO_ESTOQUE_PRODUTO_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:42:05 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<referredTableLongName>PRODUTO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1E529EEF-03BB-589F-661B-328404D15B1D</referredTableID>
+<keyObject>C62E9DE6-D440-2AF4-D6F2-6E1DD3534CC9</keyObject>
+<referredKeyID>C62E9DE6-D440-2AF4-D6F2-6E1DD3534CC9</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CD_PRODUTO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorColumn>56FCE650-2C20-4EAF-7D73-19B02C6C1CC6</discriminatorColumn>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

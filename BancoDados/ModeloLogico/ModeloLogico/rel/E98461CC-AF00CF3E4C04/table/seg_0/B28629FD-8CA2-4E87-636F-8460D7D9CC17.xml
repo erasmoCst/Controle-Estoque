@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B28629FD-8CA2-4E87-636F-8460D7D9CC17" name="FORNECEDOR">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 22:54:47 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CD_FORNECEDOR" id="F044C803-0ABE-2E53-5CA1-D37D29E7A751">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0956A391-2F5A-AEA7-6485-6BB814DE484A" referredColumn="65D2F4AD-A25B-1F4A-CBAA-C1EA2B6A57C9"/>
+</associations>
+</Column>
+<Column name="NR_CNPJ" id="8A8EE0FB-53F2-0461-685D-38319E6DB68C">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>14 CHAR</dataTypeSize>
+<ownDataTypeParameters>14 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NM_RAZAOSOCIAL" id="F4982D17-0CBA-4D1C-A55E-AF440DD4CC2D">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6594CB83-DF73-C785-1746-620BDC94CADD" name="FORNECEDOR_PK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F044C803-0ABE-2E53-5CA1-D37D29E7A751"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B092864-FF38-6BB1-ECB4-B5A9264E1608" name="FORNECEDOR_CNPJ_UN">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8A8EE0FB-53F2-0461-685D-38319E6DB68C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AF74389D-7D78-BAF2-9F8A-6DD0EA275CAC" name="FORNECEDOR_RAZSOC_UN">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4982D17-0CBA-4D1C-A55E-AF440DD4CC2D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C9DAD6C8-D478-4DA5-EB3C-F8280F1E5F83" name="FORNECEDOR_CD_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F044C803-0ABE-2E53-5CA1-D37D29E7A751"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E59D8CA4-B331-3B23-F30E-373825F1227C" name="FORNECEDOR_CNPJ_IDX">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:18:33 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8A8EE0FB-53F2-0461-685D-38319E6DB68C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1A8E468D-FFD9-0400-E1E7-635C23B14827" name="FORNECEDOR_PESSOA_FK">
+<createdBy>erasm</createdBy>
+<createdTime>2024-02-28 23:20:40 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F044C803-0ABE-2E53-5CA1-D37D29E7A751"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

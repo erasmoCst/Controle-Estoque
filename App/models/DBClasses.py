@@ -16,6 +16,16 @@ class Municipio (Base):
     nm_estado: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
     nm_pais: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
 
+    @classmethod
+    def get_cd_municipio(nome_municipio, nome_estado, nome_pais):
+        try:
+            session.query(Municipio).\
+                filter(nm_municipio = nome_municipio, nm_estado = nome_estado, nm_pais = nome_pais).\
+                one_or_none()
+            return Municipio.cd_municipio
+        except:
+            return -1
+
 class Estoque (Base):
     __tablename__ = 'ESTOQUE'
     cd_estoque: Mapped[int] = mapped_column(SMALLINT, nullable=False, primary_key=True) 
@@ -34,7 +44,7 @@ class Endereco (Base):
     cd_municipio: Mapped[int] = mapped_column(SMALLINT, ForeignKey(Municipio.cd_municipio), nullable=False)
 
     @classmethod
-    def CadastraEndereco(self, nr_cep, nm_logradouro, nr_logradouro, cd_municipio):
+    def persiste_endereco(self, nr_cep, nm_logradouro, nr_logradouro, cd_municipio):
         novoEndereco = Endereco(nr_cep=nr_cep, nm_logradouro=nm_logradouro, nr_logradouro=nr_logradouro, cd_municipio=cd_municipio)
         session.add(novoEndereco)
         session.flush()
@@ -56,7 +66,17 @@ class Cliente (Base):
     cd_cliente: Mapped[int] = mapped_column(INTEGER, ForeignKey(Pessoa.cd_pessoa), nullable=False, primary_key=True)
     nr_cpf: Mapped[str] = mapped_column(CHAR(11), nullable=False, unique=True) 
     dt_nascimento: Mapped[datetime] = mapped_column(DATE, nullable=False)
-    tp_genero: Mapped[str] = mapped_column(CHAR(1), nullable=False) 
+    tp_genero: Mapped[str] = mapped_column(CHAR(1), nullable=False)
+
+    @classmethod
+    def verifica_CPF_existe(self, CPF):
+        validaCPF = session.query(Cliente).filter_by(nr_cpf = CPF).one_or_none()
+
+        if (validaCPF):
+            print(f"Cliente com CPF: {CPF} já cadastrado!")
+            return 0
+        return 1
+
 
 class Fornecedor (Base):
     __tablename__ = 'FORNECEDOR'
