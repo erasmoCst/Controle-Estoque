@@ -1,8 +1,7 @@
-from view.gestao.cadastroPessoa import cadastro_pessoa
+from view.gestao.cadastroCliente import cadastro_cliente
 from view.atendimento.registraPedido import *
 from view.atendimento.consultaPedido import *
 from tkinter import *
-from tkinter import Tk
 
 #Criação da Janela PRINCIPAL = app
 app = Tk()
@@ -11,7 +10,6 @@ app.geometry("700x500")
 app.configure(background="#dde")
 
 ## Menu ##
-
 # Atendimento
 Barra_menu = Menu(app)
 
@@ -37,7 +35,7 @@ Barra_menu.add_cascade(label="Gestão de Produtos",menu=gestao_prod)
 
 # Gestão de clientes 
 gestao_cliente = Menu(Barra_menu, tearoff=0)
-gestao_cliente.add_command(label="Cadastro de Cliente",command= cadastro_pessoa)
+gestao_cliente.add_command(label="Cadastro de Cliente",command= cadastro_cliente)
 gestao_cliente.add_command(label="Atualização de Cliente",command= None)
 gestao_cliente.add_command(label="Remoção de Cliente",command= None)
 Barra_menu.add_cascade(label="Gestão de Clientes",menu=gestao_cliente)

@@ -28,7 +28,9 @@ class Endereco (Base):
     cd_endereco: Mapped[int] = mapped_column(INTEGER, nullable=False, primary_key=True)
     nr_cep: Mapped[str] = mapped_column(CHAR(8), nullable=False)
     nm_logradouro: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
-    nr_logradouro: Mapped[str] = mapped_column(VARCHAR(5), nullable=False)
+    nr_endereco: Mapped[str] = mapped_column(VARCHAR(5), nullable=False)
+    nm_bairro: Mapped[str] = mapped_column(VARCHAR(25), nullable=False)
+    ds_complemento: Mapped[str] = mapped_column(VARCHAR(100))
     cd_municipio: Mapped[int] = mapped_column(SMALLINT, ForeignKey(Municipio.cd_municipio), nullable=False)
 
     @classmethod
