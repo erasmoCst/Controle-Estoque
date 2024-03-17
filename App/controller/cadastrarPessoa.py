@@ -1,6 +1,6 @@
-from datetime import datetime
+
+from models.cliente import Cliente
 from config.DBConnection import session
-from models.DBClasses import Municipio, Cliente, Endereco, Pessoa
 
 def cadastrar_cliente(dados_cliente, dados_endereco, dados_pessoa):
     print(dados_cliente, dados_endereco, dados_pessoa)
@@ -67,14 +67,3 @@ def cadastrar_cliente(dados_cliente, dados_endereco, dados_pessoa):
 #             session.commit()
 #         except:
 #             session.rollback()
-
-
-
-def cadastrar_pessoa(endereco: Endereco, pessoa: Pessoa):
-    try:
-        endereco.add()
-        
-        return 1
-    except:
-        session.rollback()
-        return 0

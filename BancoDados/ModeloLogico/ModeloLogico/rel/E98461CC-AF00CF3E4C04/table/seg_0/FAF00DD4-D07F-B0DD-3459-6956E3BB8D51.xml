@@ -30,7 +30,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="NR_PRATELEITA" id="8CD68479-C6CC-3F63-AE65-3D6AF5B683BF">
+<Column name="NR_PRATELEIRA" id="8CD68479-C6CC-3F63-AE65-3D6AF5B683BF">
 <createdBy>erasm</createdBy>
 <createdTime>2024-02-28 23:38:18 UTC</createdTime>
 <ownerDesignName>ModeloLogico</ownerDesignName>

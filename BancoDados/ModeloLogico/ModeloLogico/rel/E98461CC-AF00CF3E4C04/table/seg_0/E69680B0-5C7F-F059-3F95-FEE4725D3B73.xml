@@ -67,6 +67,29 @@
 <colAssociation fkAssociation="2D141DA7-8B28-3796-B677-DE07762EEBC1" referredColumn="322003FA-ACC8-801A-9302-3DA0FC5D2C05"/>
 </associations>
 </Column>
+<Column name="NM_BAIRRO" id="88986B33-E94C-F8D4-33B3-3D624B4A0DA3">
+<createdBy>erasm</createdBy>
+<createdTime>2024-03-16 17:41:29 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 CHAR</dataTypeSize>
+<ownDataTypeParameters>25 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DS_COMPLEMENTO" id="221F2FA5-89A9-CB8C-B41A-EC05012DE7AF">
+<createdBy>erasm</createdBy>
+<createdTime>2024-03-16 17:41:29 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="AA32F685-E739-2BB0-F8A0-253CCBCA56C7" name="ENDERECO_PK">

@@ -1,6 +1,5 @@
 from tkinter import * 
 from tkinter.ttk import *
-from models.DBClasses import Cliente, Endereco, Pessoa
 from controller.cadastrarPessoa import *
 from config.DBConnection import *
 
@@ -115,5 +114,3 @@ def cadastro_cliente():
                                                            'nm_estado': nm_estado_entry.get(),
                                                            'nm_pais': nm_pais_entry.get()}))
     submit_button.grid(row=13,column=1, columnspan=2, pady=20, sticky="ew")
-  
-
