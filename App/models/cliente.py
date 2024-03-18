@@ -17,6 +17,5 @@ class Cliente (Base):
         validaCPF = session.query(Cliente).filter_by(nr_cpf = CPF).one_or_none()
 
         if (validaCPF):
-            print(f"Cliente com CPF: {CPF} já cadastrado!")
-            return 0
-        return 1
+            return {'status': 0, 'data':"", 'mensagem': "O CPF já está cadastrado no sistema! Verifique os dados e tente novamente."}
+        return {'status': 1, 'data':"", 'mensagem': "CPF válido para cadastro!"}

@@ -11,11 +11,13 @@ class Municipio (Base):
     nm_pais: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
 
     @classmethod
-    def get_cd_municipio(nome_municipio, nome_estado, nome_pais):
+    def get_cd_municipio(self, nome_municipio, nome_estado, nome_pais):
         try:
-            session.query(Municipio).\
-                filter(nm_municipio = nome_municipio, nm_estado = nome_estado, nm_pais = nome_pais).\
+            municipio = session.query(Municipio).\
+                filter_by(nm_municipio = nome_municipio, nm_estado = nome_estado, nm_pais = nome_pais).\
                 one_or_none()
-            return Municipio.cd_municipio
+            return {'status': 1, 'data': municipio.cd_municipio, 'mensagem': "Município válido!"}
         except:
-            return -1
+            return {'status': 0, 'data': "", 'mensagem': "Município, Estado ou País inválido! Verifique os dados e tente novamente."}
+
+        

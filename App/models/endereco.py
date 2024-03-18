@@ -15,8 +15,19 @@ class Endereco (Base):
     cd_municipio: Mapped[int] = mapped_column(SMALLINT, ForeignKey(Municipio.cd_municipio), nullable=False)
 
     @classmethod
-    def persiste_endereco(self, nr_cep, nm_logradouro, nr_logradouro, cd_municipio):
-        novoEndereco = Endereco(nr_cep=nr_cep, nm_logradouro=nm_logradouro, nr_logradouro=nr_logradouro, cd_municipio=cd_municipio)
-        session.add(novoEndereco)
-        session.flush()
-        return novoEndereco
+    def persiste_endereco(self, nr_cep, nm_logradouro, nr_logradouro, nm_bairro, ds_complemento, cd_municipio):
+        print(nr_cep, nm_logradouro, nr_logradouro, nm_bairro, ds_complemento, cd_municipio)
+        try:
+            novoEndereco = Endereco(nr_cep=nr_cep, 
+                                    nm_logradouro=nm_logradouro, 
+                                    nr_logradouro=nr_logradouro, 
+                                    nm_bairro=nm_bairro, 
+                                    ds_complemento=ds_complemento, 
+                                    cd_municipio=cd_municipio)
+            session.add(novoEndereco)
+            session.flush()
+            return {'status': 1, 'data': novoEndereco, 'mensagem': "Endereço cadastrado com sucesso!"}
+        except: 
+            session.rollback()
+            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar endereço!"}
+

@@ -13,5 +13,15 @@ class Pessoa (Base):
     nr_telefone: Mapped[str] = mapped_column(VARCHAR(15), nullable=False)
     nm_email: Mapped[str] = mapped_column(VARCHAR(50), nullable=False)
     
-    def CadastraPessoa():
-        pass
+    @classmethod
+    def persiste_pessoa(self, nm_cliente, nr_telefone, nm_email, cd_endereco):
+        print(nm_cliente, nr_telefone, nm_email, cd_endereco)
+        try:
+            novaPessoa = Pessoa(nm_cliente=nm_cliente, nr_telefone=nr_telefone, nm_email=nm_email, cd_endereco=cd_endereco)
+            session.add(novaPessoa)
+            session.flush()
+            return {'status': 1, 'data': novaPessoa, 'mensagem': "Pessoa cadastrada com sucesso!"}
+        except: 
+            session.rollback()
+            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar pessoa!"}
+        

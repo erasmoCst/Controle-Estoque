@@ -8,7 +8,7 @@ from tkinter import *
 #Criação da Janela PRINCIPAL = app
 app = Tk()
 app.title("App Controle de Estoque")
-app.geometry("700x500")
+app.geometry("800x500")
 app.configure(background="#dde")
 
 ## Menu ##

@@ -1,14 +1,10 @@
 from tkinter import * 
+from tkinter.messagebox import showinfo
 from tkinter.ttk import *
 from controller.cadastrarPessoa import *
 from config.DBConnection import *
 
 #FUNCÕES DE "Cadastro de Cliente"
-dados_cadastrais = {
-    'dados_pessoa': {},
-    'dados_cliente': {},
-    'dados_endereco': {},
-}
 
 def cadastro_cliente():
     # Função de cadastro de clientes
@@ -82,10 +78,15 @@ def cadastro_cliente():
     ds_complemento_entry = Entry(cadastro_cliente)
     ds_complemento_entry.grid(row=9, column=3)
 
+    # Nome do Bairro
+    Label(cadastro_cliente, background="#dde", text="Bairro:").grid(row=10, column=0, padx=10, pady=5, sticky="w")
+    nm_bairro_entry = Entry(cadastro_cliente)
+    nm_bairro_entry.grid(row=10, column=1)
+
     # Nome da Cidade
-    Label(cadastro_cliente, background="#dde", text="Cidade:").grid(row=10, column=0, padx=10, pady=5, sticky="w")
+    Label(cadastro_cliente, background="#dde", text="Cidade:").grid(row=10, column=2, padx=10, pady=5, sticky="w")
     nm_cidade_entry = Entry(cadastro_cliente)
-    nm_cidade_entry.grid(row=10, column=1, sticky="ew", columnspan=4)
+    nm_cidade_entry.grid(row=10, column=3)
 
     # Nome do Estado
     Label(cadastro_cliente, background="#dde", text="Estado:").grid(row=11, column=0, padx=11, pady=5, sticky="w")
@@ -97,20 +98,26 @@ def cadastro_cliente():
     nm_pais_entry = Entry(cadastro_cliente)
     nm_pais_entry.grid(row=11, column=3)
     
-    
+    def submit_cadastro():
+        response = cadastrar_cliente(dados_cliente = {'nr_cpf':nr_cpf_entry.get(),
+                                                      'dt_nascimento':dt_nascimento_entry.get(),
+                                                      'tp_genero':tp_genero_entry.get()},
+                                     dados_endereco = {'nr_cep': nr_cep_entry.get(),
+                                                       'nm_logradouro': nm_logradouro_entry.get(),
+                                                       'nr_endereco': nr_endereco_entry.get(),
+                                                       'ds_complemento': ds_complemento_entry.get(),
+                                                       'nm_bairro': nm_bairro_entry.get(),
+                                                       'nm_municipio': nm_cidade_entry.get(),
+                                                       'nm_estado': nm_estado_entry.get(),
+                                                       'nm_pais': nm_pais_entry.get()},
+                                     dados_pessoa = {'nm_cliente': nm_cliente_entry.get(),
+                                                     'nr_telefone': nr_telefone_entry.get(),
+                                                     'nm_email': nm_email_entry.get()})
+        print(response)
+        showinfo("Cliente", response['mensagem'])
+
+
     submit_button = Button(cadastro_cliente, text="Cadastrar Cliente",
-                           command=lambda: cadastrar_cliente(
-                                           dados_cliente = {'nr_cpf':nr_cpf_entry.get(),
-                                                            'dt_nascimento':dt_nascimento_entry.get(),
-                                                            'tp_genero':tp_genero_entry.get()},
-                                           dados_endereco = {'nm_cliente': nm_cliente_entry.get(),
-                                                             'nr_telefone': nr_telefone_entry.get(),
-                                                             'nm_email': nm_email_entry.get()},
-                                           dados_pessoa = {'nr_cep': nr_cep_entry.get(),
-                                                           'nm_logradouro': nm_logradouro_entry.get(),
-                                                           'nr_endereco': nr_endereco_entry.get(),
-                                                           'ds_complemento': ds_complemento_entry.get(),
-                                                           'nm_municipio': nm_cidade_entry.get(),
-                                                           'nm_estado': nm_estado_entry.get(),
-                                                           'nm_pais': nm_pais_entry.get()}))
+                           command=submit_cadastro)
     submit_button.grid(row=13,column=1, columnspan=2, pady=20, sticky="ew")
+    
