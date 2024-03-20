@@ -1,6 +1,6 @@
 from sqlalchemy.orm import mapped_column, Mapped
 from sqlalchemy import INTEGER, CHAR, DATE, ForeignKey, func
-from .models.pessoa import Pessoa
+from models.pessoa import Pessoa
 from models.base import Base
 from datetime import datetime
 from config.DBConnection import * 

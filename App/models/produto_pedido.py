@@ -1,7 +1,7 @@
 from sqlalchemy.orm import mapped_column, Mapped
 from sqlalchemy import INTEGER, NUMERIC, SMALLINT, ForeignKey
-from .models.pedido import Pedido
-from .models.produto import Produto
+from models.pedido import Pedido
+from models.produto import Produto
 from models.base import Base
 from config.DBConnection import * 
 

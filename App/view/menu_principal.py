@@ -1,6 +1,7 @@
-from view.gestao.Gestao_Produto.cadastro_produto import cadastro_produto
-from view.gestao.Gestao_Produto.lista_produtos import lista_produtos
-from view.gestao.Gestao_Cliente.cadastroCliente import cadastro_cliente
+from view.controle_estoque.lista_estoque import lista_produtos_estoque
+from view.gestao.produto.cadastro_produto import cadastro_produto
+from view.gestao.produto.lista_produtos import lista_produtos
+from view.gestao.cliente.cadastroCliente import cadastro_cliente
 from view.atendimento.registraPedido import *
 from view.atendimento.consultaPedido import *
 from tkinter import *
@@ -23,9 +24,9 @@ Barra_menu.add_cascade(label="Atendimento",menu=atendimento)
 
 # Controle de estoque
 controle_est = Menu(Barra_menu, tearoff=0)
-controle_est.add_command(label="Consulta de Estoque",command=None)
-controle_est.add_command(label="Registro de Entrada",command=None)
-controle_est.add_command(label="Registro de Saída",command=None)
+controle_est.add_command(label="Consulta de Estoque",command= lista_produtos_estoque)
+controle_est.add_command(label="Registro de Entrada",command= None)
+controle_est.add_command(label="Registro de Saída",command= None)
 Barra_menu.add_cascade(label="Controle de Estoque",menu=controle_est)
 
 # Gestão de produtos 
@@ -37,11 +38,11 @@ gestao_prod.add_command(label="Lista de Produtos",command= lista_produtos)
 Barra_menu.add_cascade(label="Gestão de Produtos",menu=gestao_prod)
 
 # Gestão de clientes 
-gestao_cliente = Menu(Barra_menu, tearoff=0)
-gestao_cliente.add_command(label="Cadastro de Cliente",command=cadastro_cliente)
-gestao_cliente.add_command(label="Atualização de Cliente",command=None)
-gestao_cliente.add_command(label="Remoção de Cliente",command=None)
-Barra_menu.add_cascade(label="Gestão de Clientes",menu=gestao_cliente)
+cliente = Menu(Barra_menu, tearoff=0)
+cliente.add_command(label="Cadastro de Cliente",command=cadastro_cliente)
+cliente.add_command(label="Atualização de Cliente",command=None)
+cliente.add_command(label="Remoção de Cliente",command=None)
+Barra_menu.add_cascade(label="Gestão de Clientes",menu=cliente)
 
 # Gestão de fornecedores 
 gestao_fornecedor = Menu(Barra_menu, tearoff=0)
