@@ -1,4 +1,5 @@
 
+from models.base import Base
 from models.pessoa_juridica import Pessoa_Juridica
 from models.endereco import Endereco
 from models.municipio import Municipio
@@ -8,15 +9,17 @@ from models.pessoa import Pessoa
 class Cadastro_Pessoa ():
     def cadastrar_PF(dados_PF, dados_endereco, dados_pessoa):
         valida_CPF = Pessoa_Fisica.verifica_CPF_existe(dados_PF['nr_cpf'])
+
         if(not valida_CPF['status']):
-            return valida_CPF['mensagem']
+            Base.rollback()
+            return valida_CPF
         else:
             municipio = Municipio.get_cd_municipio(dados_endereco['nm_municipio'], 
                                                     dados_endereco['nm_estado'], 
                                                     dados_endereco['nm_pais'])
             if(not municipio['status']):
-                print("municipio['status']", municipio['status'])
-                return municipio['mensagem']
+                Base.rollback()
+                return municipio
             else:
                 try:
                     endereco = Endereco.persiste_endereco(dados_endereco['nr_cep'], 
@@ -26,16 +29,16 @@ class Cadastro_Pessoa ():
                                                         dados_endereco['ds_complemento'], 
                                                         municipio['data'])
                     if(not endereco['status']):
-                        print("endereco['status']:", endereco['status'])
-                        return endereco['mensagem']
+                        Base.rollback()
+                        return endereco
                     else:
                         pessoa = Pessoa.persiste_pessoa(dados_pessoa['nm_cliente'], 
                                                         dados_pessoa['nr_telefone'], 
                                                         dados_pessoa['nm_email'],
                                                         endereco['data'].cd_endereco)
                         if(not pessoa['status']):
-                            print("pessoa['status']",pessoa['status'])
-                            return pessoa['mensagem']
+                            Base.rollback()
+                            return pessoa
                         else:
                             return {'status': 1, 'mensagem': "Cliente PF cadastrado com sucesso!"}
                 except  :
@@ -46,16 +49,18 @@ class Cadastro_Pessoa ():
         valida_razao_social = Pessoa_Juridica.verifica_razao_social_existe(dados_PJ['nm_razao_social'])
         
         if(not valida_CNPJ['status']):
-            return valida_CNPJ['mensagem']
+            Base.rollback()
+            return valida_CNPJ
         elif(not valida_razao_social['status']):
-            return valida_razao_social['mensagem']
+            Base.rollback()
+            return valida_razao_social
         else:
             municipio = Municipio.get_cd_municipio(dados_endereco['nm_municipio'], 
                                                     dados_endereco['nm_estado'], 
                                                     dados_endereco['nm_pais'])
             if(not municipio['status']):
-                print("municipio['status']", municipio['status'])
-                return municipio['mensagem']
+                Base.rollback()
+                return municipio
             
             else:
                 try:
@@ -66,20 +71,23 @@ class Cadastro_Pessoa ():
                                                         dados_endereco['ds_complemento'], 
                                                         municipio['data'])
                     if(not endereco['status']):
-                        print("endereco['status']:", endereco['status'])
-                        return endereco['mensagem']
+                        Base.rollback()
+                        return endereco
                     else:
                         try:
-                            pessoa = Pessoa.persiste_pessoa(dados_pessoa['nm_cliente'], 
+                            pessoa = Pessoa.persiste_pessoa(dados_pessoa['nm_fantasia'], 
                                                             dados_pessoa['nr_telefone'], 
                                                             dados_pessoa['nm_email'],
                                                             endereco['data'].cd_endereco)
                             if(not pessoa['status']):
                                 print("pessoa['status']",pessoa['status'])
-                                return pessoa['mensagem']
+                                return pessoa
                             else:
+                                Base.commit()
                                 return {'status': 1, 'mensagem': "Cliente PJ cadastrado com sucesso!"}
                         except:
+                            Base.rollback()
                             return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Pessoa!"}
-                except  :
+                except:
+                    Base.rollback()
                     return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Endereço!"}

@@ -120,6 +120,8 @@ def cadastro_cliente_PF():
     submit_button.grid(row=14,column=1, columnspan=2, pady=20, sticky="ew")
 
 
+
+
 def cadastro_cliente_PJ():
     # Função de cadastro de clientes
     cadastro_cliente = Toplevel()
@@ -132,18 +134,18 @@ def cadastro_cliente_PJ():
     
     # Data Nascimento
     Label(cadastro_cliente, text="Nome Fantasia:", background="#dde", anchor="w").grid(row=2, column=0, sticky="w", padx=10, pady=10)
-    dt_nascimento_entry = Entry(cadastro_cliente)
-    dt_nascimento_entry.grid(row=2, column=1)
+    nm_fantasia_entry = Entry(cadastro_cliente)
+    nm_fantasia_entry.grid(row=2, column=1)
     
     # Número CPF
     Label(cadastro_cliente, text="CNPJ:", background="#dde", anchor="w").grid(row=2, column=2, sticky="w", padx=10, pady=10)
-    nr_cpf_entry = Entry(cadastro_cliente)
-    nr_cpf_entry.grid(row=2, column=3)
+    nr_cnpj_entry = Entry(cadastro_cliente)
+    nr_cnpj_entry.grid(row=2, column=3)
 
     # Nome do Cliente
     Label(cadastro_cliente, text="Razão Social:", background="#dde", anchor="w").grid(row=3, column=0, sticky="w", padx=10)
-    nm_cliente_entry = Entry(cadastro_cliente)
-    nm_cliente_entry.grid(row=3, column=1, sticky="ew", columnspan=4)
+    nm_razao_social_entry = Entry(cadastro_cliente)
+    nm_razao_social_entry.grid(row=3, column=1, sticky="ew", columnspan=4)
     
 
     ## Dados do Contato
@@ -204,20 +206,19 @@ def cadastro_cliente_PJ():
     nm_pais_entry.grid(row=12, column=3)
     
     def submit_cadastro():
-        response = Cadastro_Pessoa.cadastrar_PF(dados_PF = {'nr_cpf':nr_cpf_entry.get(),
-                                                    'dt_nascimento':dt_nascimento_entry.get(),
-                                                    'tp_genero':tp_genero_entry.get()},
-                                dados_endereco = {'nr_cep': nr_cep_entry.get(),
-                                                'nm_logradouro': nm_logradouro_entry.get(),
-                                                'nr_endereco': nr_endereco_entry.get(),
-                                                'ds_complemento': ds_complemento_entry.get(),
-                                                'nm_bairro': nm_bairro_entry.get(),
-                                                'nm_municipio': nm_cidade_entry.get(),
-                                                'nm_estado': nm_estado_entry.get(),
-                                                'nm_pais': nm_pais_entry.get()},
-                                dados_pessoa = {'nm_cliente': nm_cliente_entry.get(),
-                                                'nr_telefone': nr_telefone_entry.get(),
-                                                'nm_email': nm_email_entry.get()})
+        response = Cadastro_Pessoa.cadastrar_PJ(dados_PJ = {'nr_cnpj':nr_cnpj_entry.get(),
+                                                            'nm_razao_social':nm_fantasia_entry.get()},
+                                                dados_endereco = {'nr_cep': nr_cep_entry.get(),
+                                                                  'nm_logradouro': nm_logradouro_entry.get(),
+                                                                  'nr_endereco': nr_endereco_entry.get(),
+                                                                  'ds_complemento': ds_complemento_entry.get(),
+                                                                  'nm_bairro': nm_bairro_entry.get(),
+                                                                  'nm_municipio': nm_cidade_entry.get(),
+                                                                  'nm_estado': nm_estado_entry.get(),
+                                                                  'nm_pais': nm_pais_entry.get()},
+                                                dados_pessoa = {'nm_fantasia': nm_fantasia_entry.get(),
+                                                                'nr_telefone': nr_telefone_entry.get(),
+                                                                'nm_email': nm_email_entry.get()})
         print(response)
         showinfo("Cliente", response['mensagem'])
 
