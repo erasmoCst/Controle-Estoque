@@ -54,6 +54,18 @@
 <ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="VL_PRODUTO" id="0E9E94CD-76C9-D958-8E68-FABE770B2C54">
+<createdBy>erasm</createdBy>
+<createdTime>2024-03-20 18:10:25 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C62E9DE6-D440-2AF4-D6F2-6E1DD3534CC9" name="PRODUTO_PK">

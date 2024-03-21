@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B28629FD-8CA2-4E87-636F-8460D7D9CC17" name="FORNECEDOR">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B28629FD-8CA2-4E87-636F-8460D7D9CC17" name="PESSOA_JURIDICA">
 <createdBy>erasm</createdBy>
 <createdTime>2024-02-28 22:54:47 UTC</createdTime>
 <ownerDesignName>ModeloLogico</ownerDesignName>
@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="CD_FORNECEDOR" id="F044C803-0ABE-2E53-5CA1-D37D29E7A751">
+<Column name="CD_PESSOA" id="F044C803-0ABE-2E53-5CA1-D37D29E7A751">
 <createdBy>erasm</createdBy>
 <createdTime>2024-02-28 23:18:33 UTC</createdTime>
 <ownerDesignName>ModeloLogico</ownerDesignName>

@@ -19,8 +19,3 @@ class Pessoa_Fisica (Base):
         if (validaCPF):
             return {'status': 0, 'data':"", 'mensagem': "O CPF já está cadastrado no sistema! Verifique os dados e tente novamente."}
         return {'status': 1, 'data':"", 'mensagem': "CPF válido para cadastro!"}
-    
-
-
-
-

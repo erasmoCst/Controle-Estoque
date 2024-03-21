@@ -58,6 +58,7 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="FCE98F4F-A3BB-D28B-F4FC-49D611B408F0"/>
+<colUsage columnID="4F9D467C-64CE-2AB1-93BA-F7541A2BD632"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="969DBAA2-0264-7E3B-D2DA-17694125DD2E" name="PRODUTO_PEDIDO_PEDIDO_FK">
