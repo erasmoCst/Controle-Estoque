@@ -25,4 +25,9 @@ class Pessoa (Base):
         except: 
             session.rollback()
             return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar pessoa!"}
+
+    @classmethod
+    def busca_clientes_nome(self, nm_cliente):
+        results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
+        return results
         

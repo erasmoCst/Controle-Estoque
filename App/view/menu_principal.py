@@ -18,13 +18,13 @@ app.configure(background="#dde")
 Barra_menu = Menu(app)
 
 atendimento = Menu(Barra_menu, tearoff=0)
-atendimento.add_command(label="Registrar Pedido",command= registrar_pedido)
-atendimento.add_command(label="Atender Pedido",command= consultar_pedido)
+atendimento.add_command(label="Registrar Pedido",command=registrar_pedido)
+atendimento.add_command(label="Atender Pedido",command=consultar_pedido)
 Barra_menu.add_cascade(label="Atendimento",menu=atendimento)
 
 # Controle de estoque
 controle_est = Menu(Barra_menu, tearoff=0)
-controle_est.add_command(label="Produtos em Estoque",command= lista_produtos_estoque)
+controle_est.add_command(label="Produtos em Estoque",command=lista_produtos_estoque)
 Barra_menu.add_cascade(label="Controle de Estoque",menu=controle_est)
 
 # Gestão de produtos 

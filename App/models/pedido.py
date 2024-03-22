@@ -11,4 +11,9 @@ class Pedido (Base):
     cd_pessoa: Mapped[int] = mapped_column(INTEGER, ForeignKey(Pessoa.cd_pessoa), nullable=False) 
     tp_pedido: Mapped[str] = mapped_column(CHAR(1), nullable=False)
     dt_pedido: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=func.sysdate())
-    dt_entrega: Mapped[datetime] = mapped_column(DATE, nullable=False)
+    dt_entregaprevista: Mapped[datetime] = mapped_column(DATE, nullable=False)
+
+    @classmethod
+    def busca_pedidio_nm_cliente(self, nm_cliente):
+        results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
+        return results
