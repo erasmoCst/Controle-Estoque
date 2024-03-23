@@ -132,17 +132,17 @@ def cadastro_cliente_PJ():
     ## Dados Pessoais
     Label(cadastro_cliente, text=" -- Dados da Empresa --", background="#dde", anchor="w").grid(row=1, column=0, sticky="w", padx=10, pady=10)
     
-    # Data Nascimento
+    # Nome Fantasia
     Label(cadastro_cliente, text="Nome Fantasia:", background="#dde", anchor="w").grid(row=2, column=0, sticky="w", padx=10, pady=10)
     nm_fantasia_entry = Entry(cadastro_cliente)
     nm_fantasia_entry.grid(row=2, column=1)
     
-    # Número CPF
+    # Número CNPJ
     Label(cadastro_cliente, text="CNPJ:", background="#dde", anchor="w").grid(row=2, column=2, sticky="w", padx=10, pady=10)
     nr_cnpj_entry = Entry(cadastro_cliente)
     nr_cnpj_entry.grid(row=2, column=3)
 
-    # Nome do Cliente
+    # Razão Social
     Label(cadastro_cliente, text="Razão Social:", background="#dde", anchor="w").grid(row=3, column=0, sticky="w", padx=10)
     nm_razao_social_entry = Entry(cadastro_cliente)
     nm_razao_social_entry.grid(row=3, column=1, sticky="ew", columnspan=4)
@@ -222,6 +222,5 @@ def cadastro_cliente_PJ():
         print(response)
         showinfo("Cliente", response['mensagem'])
 
-    submit_button = Button(cadastro_cliente, text="Cadastrar Cliente",
-                        command=submit_cadastro)
+    submit_button = Button(cadastro_cliente, text="Cadastrar Cliente", command=submit_cadastro)
     submit_button.grid(row=14,column=1, columnspan=2, pady=20, sticky="ew")

@@ -1,5 +1,7 @@
 from sqlalchemy.orm import mapped_column, Mapped
 from sqlalchemy import INTEGER, CHAR, VARCHAR, ForeignKey
+from models.endereco import Endereco
+from models.municipio import Municipio
 from models.pessoa import Pessoa
 from models.base import Base
 from config.DBConnection import * 
@@ -26,3 +28,30 @@ class Pessoa_Juridica (Base):
             return {'status': 0, 'data':"", 'mensagem': "A Razão Social já está cadastrada no sistema! Verifique os dados e tente novamente."}
         return {'status': 1, 'data':"", 'mensagem': "Razão Social válida para cadastro!"}
     
+    
+    @classmethod
+    def busca_dados_cliente_CPF(self, CNPJ):
+        dados_cliente = session.query(Pessoa.nm_pessoa, 
+                                    Pessoa.nr_telefone, 
+                                    Pessoa.nm_email,
+                                    Pessoa_Juridica.nr_cnpj,
+                                    Pessoa_Juridica.nm_razaosocial,
+                                    Endereco.nr_cep,
+                                    Endereco.nm_logradouro,
+                                    Endereco.nr_endereco,
+                                    Endereco.nm_bairro,
+                                    Endereco.ds_complemento,
+                                    Municipio.nm_municipio,
+                                    Municipio.nm_estado,
+                                    Municipio.nm_pais).\
+        select_from(Pessoa_Juridica).\
+        join(Pessoa, Pessoa.cd_pessoa == Pessoa_Juridica.cd_pessoa).\
+        join(Endereco, Endereco.cd_endereco == Pessoa.cd_endereco).\
+        join(Municipio, Municipio.cd_municipio == Endereco.cd_municipio).\
+        filter(Pessoa_Juridica.nr_cnpj == CNPJ).\
+        first()
+
+        if dados_cliente:
+            return {'status': 1, 'data': dados_cliente, 'mensagem': "Cliente encontrado!"}
+        else:
+            return {'status': 0, 'data': "", 'mensagem': "Cliente não encontrado!"}   
