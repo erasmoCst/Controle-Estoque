@@ -1,7 +1,7 @@
 from tkinter import * 
 from tkinter.messagebox import showinfo
 from tkinter.ttk import *
-from controller.cadastrarPessoa import *
+from controller.cadastro_pessoa import *
 from config.DBConnection import *
 
 #FUNCÕES DE "Cadastro de Cliente"
