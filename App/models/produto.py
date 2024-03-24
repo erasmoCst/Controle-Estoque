@@ -10,3 +10,12 @@ class Produto (Base):
     ds_produto: Mapped[str] = mapped_column(VARCHAR(500), nullable=False)
     tp_embalagemproduto: Mapped[str] = mapped_column(CHAR(1), nullable=False)
     vl_produto: Mapped[float] = mapped_column(NUMERIC(7,2), nullable=False)
+
+    def busca_produto_por_id(cd_produto):
+        try:
+            produto = session.query(Produto).filter(Produto.cd_produto == cd_produto).first()
+            return {'status': 1, 'data': produto, 'mensagem': "Produto encontrado!"}
+        except:
+            return {'status': 0, 'data': "", 'mensagem': "Produto não cadastrado! Verifique o código informado!"}
+
+        

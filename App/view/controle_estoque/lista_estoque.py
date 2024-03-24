@@ -3,7 +3,7 @@ from tkinter import Toplevel
 from tkinter import ttk
 from models.estoque import Estoque
 from models.produto import Produto
-from models.produto_estoque import Produto_estoque
+from models.produto_estoque import Produto_Estoque
 from config.DBConnection import *
 
 # Função para preencher o treeview 
@@ -13,10 +13,10 @@ def preencher_tv(tree):
         tree.delete(i)
 
     # Consultar os produtos do estoque do Banco de dados
-    produtos_estoque = session.query(Produto_estoque, Produto.nm_produto, Estoque.cd_estoque, Estoque.nr_rua, Estoque.nr_prateleira, Estoque.nr_sequencia).\
-    join(Produto, Produto_estoque.cd_produto == Produto.cd_produto).\
-    join(Estoque, Produto_estoque.cd_estoque == Estoque.cd_estoque).\
-    order_by(Produto_estoque.cd_produto).all()
+    produtos_estoque = session.query(Produto_Estoque, Produto.nm_produto, Estoque.cd_estoque, Estoque.nr_rua, Estoque.nr_prateleira, Estoque.nr_sequencia).\
+    join(Produto, Produto_Estoque.cd_produto == Produto.cd_produto).\
+    join(Estoque, Produto_Estoque.cd_estoque == Estoque.cd_estoque).\
+    order_by(Produto_Estoque.cd_produto).all()
 
     # Adicionando os dados ao TreeView
     for produto_estoque, nm_produto, cd_estoque, nr_rua, nr_prateleira, nr_sequencia in produtos_estoque:

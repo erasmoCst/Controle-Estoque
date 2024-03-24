@@ -24,25 +24,26 @@ class Pessoa_Fisica (Base):
     
     @classmethod
     def busca_dados_cliente_CPF(self, CPF):
-        dados_cliente = session.query(Pessoa.nm_pessoa, 
-                                    Pessoa.nr_telefone, 
-                                    Pessoa.nm_email,
-                                    Pessoa_Fisica.dt_nascimento,
-                                    Pessoa_Fisica.tp_genero,
-                                    Endereco.nr_cep,
-                                    Endereco.nm_logradouro,
-                                    Endereco.nr_endereco,
-                                    Endereco.nm_bairro,
-                                    Endereco.ds_complemento,
-                                    Municipio.nm_municipio,
-                                    Municipio.nm_estado,
-                                    Municipio.nm_pais).\
-        select_from(Pessoa_Fisica).\
-        join(Pessoa, Pessoa.cd_pessoa == Pessoa_Fisica.cd_pessoa).\
-        join(Endereco, Endereco.cd_endereco == Pessoa.cd_endereco).\
-        join(Municipio, Municipio.cd_municipio == Endereco.cd_municipio).\
-        filter(Pessoa_Fisica.nr_cpf == CPF).\
-        first()
+        dados_cliente = session.query(Pessoa.cd_pessoa,
+                                      Pessoa.nm_pessoa, 
+                                      Pessoa.nr_telefone, 
+                                      Pessoa.nm_email,
+                                      Pessoa_Fisica.dt_nascimento,
+                                      Pessoa_Fisica.tp_genero,
+                                      Endereco.nr_cep,
+                                      Endereco.nm_logradouro,
+                                      Endereco.nr_endereco,
+                                      Endereco.nm_bairro,
+                                      Endereco.ds_complemento,
+                                      Municipio.nm_municipio,
+                                      Municipio.nm_estado,
+                                      Municipio.nm_pais).\
+                        select_from(Pessoa_Fisica).\
+                        join(Pessoa, Pessoa.cd_pessoa == Pessoa_Fisica.cd_pessoa).\
+                        join(Endereco, Endereco.cd_endereco == Pessoa.cd_endereco).\
+                        join(Municipio, Municipio.cd_municipio == Endereco.cd_municipio).\
+                        filter(Pessoa_Fisica.nr_cpf == CPF).\
+                        first()
 
         if dados_cliente:
             return {'status': 1, 'data': dados_cliente, 'mensagem': "Cliente encontrado!"}

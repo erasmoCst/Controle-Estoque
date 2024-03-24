@@ -16,7 +16,6 @@ class Endereco (Base):
 
     @classmethod
     def persiste_endereco(self, nr_cep, nm_logradouro, nr_endereco, nm_bairro, ds_complemento, cd_municipio):
-        print(nr_cep, nm_logradouro, nr_endereco, nm_bairro, ds_complemento, cd_municipio)
         try:
             novoEndereco = Endereco(nr_cep=nr_cep, 
                                     nm_logradouro=nm_logradouro, 

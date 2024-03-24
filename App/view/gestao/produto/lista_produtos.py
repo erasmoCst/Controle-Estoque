@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
 from tkinter import ttk
 from sqlalchemy import values
-from models.produto_estoque import Produto_estoque
+from models.produto_estoque import Produto_Estoque
 from models.produto import Produto
 from config.DBConnection import *
 from tkinter.messagebox import showinfo
@@ -89,7 +89,7 @@ def lista_produtos():
         dt_prod_estoq = date.today()
 
         # Criar uma nova instância de Produto_estoque com os dados inseridos
-        novo_prod_estoque = Produto_estoque(cd_produto=id_produto, cd_estoque=locacao, nr_lote=numero_lote, qt_produtoestoque= qt_produto, dt_validade=dt_validade_str, dt_produtoestoque=dt_prod_estoq)
+        novo_prod_estoque = Produto_Estoque(cd_produto=id_produto, cd_estoque=locacao, nr_lote=numero_lote, qt_produtoestoque= qt_produto, dt_validade=dt_validade_str, dt_produtoestoque=dt_prod_estoq)
 
         try:
             session.add(novo_prod_estoque)

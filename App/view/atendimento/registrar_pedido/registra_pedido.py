@@ -2,38 +2,11 @@
 from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
 from tkinter import messagebox
+from controller.pedido import criar_pedido
+from view.atendimento.registrar_pedido.itens_pedido import itens_pedido
 from controller.consulta_cliente import Consulta_Cliente
-from models.endereco import Endereco
-from models.pessoa import Pessoa
-from models.produto import Produto
 from config.DBConnection import *
 
-#FUNCÕES DE "ATENDIMENTO"
-
-# def abrir_janela_agendamento():
-#     # Função para abrir a janela de agendamento de entrega
-#     janela_agendamento = Toplevel()
-#     janela_agendamento.title("Agendamento de Entrega")
-#     janela_agendamento.geometry("400x300")
-#     janela_agendamento.configure(background="#dde")
-
-# def abrir_janela_resumo(codigo_prod, quantidade_prod):
-#     # Função para abrir a janela de resumo do pedido
-#     janela_resumo = Toplevel()
-#     janela_resumo.title("Resumo do Pedido")
-#     janela_resumo.geometry("400x300")
-#     janela_resumo.configure(background="#dde")
-
-#     # Resumo:
-#     Label(janela_resumo, text="Código do produto: " + codigo_prod).pack()
-#     Label(janela_resumo, text="Quantidade: " + quantidade_prod).pack()
-
-# # # Variáveis globais para os campos de entrada (Para serem acessadas em quaisquer aprte do codigo)
-# codigo_prod_entry = None
-# quantidade_prod_entry = None
-# id_cliente_entry = None
-# dia_entrega_entry = None
-# hora_entrega_entry = None
 
 def registrar_pedido():
     # Registro de pedido
@@ -58,7 +31,7 @@ def registrar_pedido():
         else:
             if tamanho == 11:
                 response = Consulta_Cliente.consulta_PF(cpf_cnpj)
-                print(response)
+
                 if not response['status']:
                     messagebox.showerror("Erro", response['mensagem'])
                 else:
@@ -147,10 +120,15 @@ def registrar_pedido():
                     nm_pais_entry.insert(0, response['data'].nm_pais)
                     nm_pais_entry.grid(row=12, column=3)
 
+                    def cria_pedido():
+                        response_pedido = criar_pedido(response["data"].cd_pessoa)
+                        if not response_pedido['status']:
+                            messagebox.showerror("Erro", response_pedido['mensagem'])
+                        else: 
+                            itens_pedido(response['data'])
+
                     Button(registra_pedido, text="Atualizar dados cliente", command=None).grid(row=14, column=0, padx=10, pady=10, sticky="ew")
-
-
-                    Button(registra_pedido, text="Continuar Pedido", command=None).grid(row=14, column=2, columnspan=4, padx=10, pady=10)
+                    Button(registra_pedido, text="Continuar Pedido", command=cria_pedido).grid(row=14, column=2, columnspan=4, padx=10, pady=10)
             else:
                 response = Consulta_Cliente.consulta_PJ(cpf_cnpj)
                 print(response)
@@ -230,21 +208,8 @@ def registrar_pedido():
                     nm_pais_entry = Entry(registra_pedido)
                     nm_pais_entry.insert(0, response['data'].nm_pais)
                     nm_pais_entry.grid(row=12, column=3)
-
+                    
                     Button(registra_pedido, text="Atualizar dados cliente", command=None).grid(row=14, column=0, padx=10, pady=10, sticky="ew")
-
-
                     Button(registra_pedido, text="Continuar Pedido", command=None).grid(row=14, column=2, columnspan=4, padx=10, pady=10)
 
     Button(registra_pedido, text="Consultar Cliente", command=consultar_cliente).grid(row=0, column=2, padx=10, pady=10)
-
-
-    # 
-    
-    # Label(registra_pedido, text="", background="#dde").grid(row=1, column=1, columnspan=3, pady=10)
-
-    # Label(registra_pedido, text="Selecione os Produtos:", background="#dde", anchor="w").grid(row=2, column=0, padx=10, pady=10)
-    # nm_produto_entry = Entry(registra_pedido)
-    # nm_produto_entry.grid(row=3, column=0, columnspan=4, sticky="ew" ,padx=10, pady=10)
-    
-    # Button(registra_pedido, text="Buscar Produto", command=None).grid(row=2, column=1, padx=10, pady=10)

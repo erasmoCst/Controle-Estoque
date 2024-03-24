@@ -2,7 +2,7 @@ from view.controle_estoque.lista_estoque import lista_produtos_estoque
 from view.gestao.produto.cadastro_produto import cadastro_produto
 from view.gestao.produto.lista_produtos import lista_produtos
 from view.gestao.cliente.cadastro_cliente import cadastro_cliente_PF, cadastro_cliente_PJ
-from view.atendimento.registra_pedido import *
+from view.atendimento.registrar_pedido.registra_pedido import *
 from view.atendimento.consulta_pedido import *
 from tkinter import *
 
@@ -13,7 +13,6 @@ app.geometry("800x500")
 app.configure(background="#dde")
 
 ## Menu ##
-
 # Atendimento
 Barra_menu = Menu(app)
 
