@@ -14,8 +14,7 @@ def preencher_tv(tree, nm_produto=None):
             produto.ds_produto,
             "Ensacado" if produto.tp_embalagemproduto == "E" else "A granel"))
 
-
-def busca_produto():
+def busca_produto(atualizar_produto_selecionado):
     busca_produto = Toplevel()
     busca_produto.title("Busca de Produtos")
     busca_produto.geometry("1000x500")
@@ -29,15 +28,25 @@ def busca_produto():
     nm_produto_entry = Entry(busca_produto)
     nm_produto_entry.grid(row=1, column=2, padx=10)
 
-    tview = ttk.Treeview(busca_produto, columns=("ID", "Nome", "Descrição", "Embalagem"), show="headings")
-    tview.heading("ID", text="ID")
+    tview = ttk.Treeview(busca_produto, columns=("Código", "Nome", "Descrição", "Embalagem"), show="headings")
+    tview.heading("Código", text="Código")
     tview.heading("Nome", text="Nome")
     tview.heading("Descrição", text="Descrição")
     tview.heading("Embalagem", text="Embalagem")
-
     tview.grid(row=2, column=0, columnspan=4, padx=10, pady=10)
-
+    
     preencher_tv(tview)
+
+    def seleciona_produto(tree):
+        item = tree.selection()[0]
+        cd_produto = tree.item(item, option='values')[0]
+        nm_produto = tree.item(item, option='values')[1]
+        
+        # Chama a função de atualizar da Tela 1
+        atualizar_produto_selecionado(cd_produto, nm_produto)
+
+        busca_produto.destroy()
 
     Button(busca_produto, text="Consultar Código", command=None).grid(row=1, column=1)
     Button(busca_produto, text="Consultar Nome", command=lambda: preencher_tv(tview, nm_produto_entry.get())).grid(row=1, column=3)
+    Button(busca_produto, text="Selecionar", command=lambda:seleciona_produto(tview)).grid(row=3, column=0, columnspan=4, padx=10, pady=10)
