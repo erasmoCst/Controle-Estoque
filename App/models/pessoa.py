@@ -15,7 +15,6 @@ class Pessoa (Base):
     
     @classmethod
     def persiste_pessoa(self, nm_cliente, nr_telefone, nm_email, cd_endereco):
-        print("persiste_pessoa: ", nm_cliente, nr_telefone, nm_email, cd_endereco)
         try:
             novaPessoa = Pessoa(nm_pessoa=nm_cliente, nr_telefone=nr_telefone, nm_email=nm_email, cd_endereco=cd_endereco)
             print("novaPessoa:", novaPessoa)

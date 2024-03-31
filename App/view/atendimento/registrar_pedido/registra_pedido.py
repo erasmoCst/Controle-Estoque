@@ -9,7 +9,6 @@ from config.DBConnection import *
 
 
 def registrar_pedido():
-    # Registro de pedido
     registra_pedido = Toplevel()
     registra_pedido.title("Registro de Pedido")
     registra_pedido.geometry("700x500")
@@ -20,7 +19,6 @@ def registrar_pedido():
     cpf_cnpj_cliente_entry.grid(row=0, column=1)
 
     def consultar_cliente():
-        # Função para consultar o cliente
         cpf_cnpj = cpf_cnpj_cliente_entry.get()
         tamanho = len(cpf_cnpj)
 

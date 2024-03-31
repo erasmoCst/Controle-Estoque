@@ -31,7 +31,6 @@ class Pedido (Base):
             session.add(novoPedido)
             session.flush()
             return {'status': 1, 'data': novoPedido, 'mensagem': "Pedido cadastrado com sucesso!"}
-            
         except Exception as e: 
             session.rollback()
             print(f"Erro inesperado:{str (e)}")

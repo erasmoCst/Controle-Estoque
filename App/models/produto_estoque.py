@@ -17,9 +17,15 @@ class Produto_Estoque (Base):
 
     def consulta_produto_estoque(cd_produto):
         try:
-            produto_estoque = session.query(Produto_Estoque.qt_produtoestoque).\
+            produto_estoque = session.query(Produto.cd_produto,
+                                            Produto.nm_produto,
+                                            Produto.ds_produto,
+                                            Produto.tp_embalagemproduto,
+                                            Produto.vl_produto,
+                                            Produto_Estoque.qt_produtoestoque).\
                 join(Produto, Produto.cd_produto == Produto_Estoque.cd_produto).\
-                filter(Produto_Estoque.cd_produto == cd_produto).all()
+                filter(Produto_Estoque.cd_produto == cd_produto).\
+                first()
             return {"status": "1", "data": produto_estoque, "mensagem": "Produto consultado com sucesso"}
         except:
             return {"status": "0", "data": "", "mensagem": "Erro ao consultar o produto no estoque"}
