@@ -28,7 +28,6 @@ class Pessoa_Juridica (Base):
             return {'status': 0, 'data':"", 'mensagem': "A Razão Social já está cadastrada no sistema! Verifique os dados e tente novamente."}
         return {'status': 1, 'data':"", 'mensagem': "Razão Social válida para cadastro!"}
     
-    
     @classmethod
     def busca_dados_cliente_CPF(self, CNPJ):
         dados_cliente = session.query(Pessoa.nm_pessoa, 

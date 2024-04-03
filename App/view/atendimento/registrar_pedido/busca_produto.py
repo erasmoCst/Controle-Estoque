@@ -39,11 +39,8 @@ def busca_produto(atualizar_produto_selecionado):
 
     def seleciona_produto(tree):
         item = tree.selection()[0]
-        cd_produto = tree.item(item, option='values')[0]
-        nm_produto = tree.item(item, option='values')[1]
-        
-        # Chama a função de atualizar da Tela 1
-        atualizar_produto_selecionado(cd_produto, nm_produto)
+
+        atualizar_produto_selecionado(tree.item(item, option='values')[0])
 
         busca_produto.destroy()
 
