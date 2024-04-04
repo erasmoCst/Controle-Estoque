@@ -26,6 +26,7 @@ class Produto_Estoque (Base):
                 join(Produto, Produto.cd_produto == Produto_Estoque.cd_produto).\
                 filter(Produto_Estoque.cd_produto == cd_produto).\
                 first()
+            
             return {"status": "1", "data": produto_estoque, "mensagem": "Produto consultado com sucesso"}
         except:
             return {"status": "0", "data": "", "mensagem": "Erro ao consultar o produto no estoque"}

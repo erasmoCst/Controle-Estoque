@@ -40,6 +40,7 @@ class Cadastro_Pessoa ():
                             Base.rollback()
                             return pessoa
                         else:
+                            Base.commit()
                             return {'status': 1, 'mensagem': "Cliente PF cadastrado com sucesso!"}
                 except  :
                     return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Cliente PF!"}
@@ -80,7 +81,7 @@ class Cadastro_Pessoa ():
                                                             dados_pessoa['nm_email'],
                                                             endereco['data'].cd_endereco)
                             if(not pessoa['status']):
-                                print("pessoa['status']",pessoa['status'])
+                                ("pessoa['status']",pessoa['status'])
                                 return pessoa
                             else:
                                 Base.commit()

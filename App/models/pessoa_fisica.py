@@ -28,6 +28,7 @@ class Pessoa_Fisica (Base):
                                       Pessoa.nm_pessoa, 
                                       Pessoa.nr_telefone, 
                                       Pessoa.nm_email,
+                                      Pessoa_Fisica.nr_cpf,
                                       Pessoa_Fisica.dt_nascimento,
                                       Pessoa_Fisica.tp_genero,
                                       Endereco.nr_cep,

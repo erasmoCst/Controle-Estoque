@@ -112,7 +112,6 @@ def cadastro_cliente_PF():
                                 dados_pessoa = {'nm_cliente': nm_cliente_entry.get(),
                                                 'nr_telefone': nr_telefone_entry.get(),
                                                 'nm_email': nm_email_entry.get()})
-        print(response)
         showinfo("Cliente", response['mensagem'])
 
     submit_button = Button(cadastro_cliente, text="Cadastrar Cliente",
@@ -219,7 +218,7 @@ def cadastro_cliente_PJ():
                                                 dados_pessoa = {'nm_fantasia': nm_fantasia_entry.get(),
                                                                 'nr_telefone': nr_telefone_entry.get(),
                                                                 'nm_email': nm_email_entry.get()})
-        print(response)
+        (response)
         showinfo("Cliente", response['mensagem'])
 
     submit_button = Button(cadastro_cliente, text="Cadastrar Cliente", command=submit_cadastro)

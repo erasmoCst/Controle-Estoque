@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
 from tkinter import messagebox
-from controller.pedido import criar_pedido
+from controller.cadastro_pedido import criar_pedido
 from view.atendimento.registrar_pedido.itens_pedido import itens_pedido
 from controller.consulta_cliente import Consulta_Cliente
 from config.DBConnection import *
@@ -110,7 +110,7 @@ def registrar_pedido():
                     Label(registra_pedido, background="#dde", text="Estado:").grid(row=12, column=0, padx=11, pady=5, sticky="w")
                     nm_estado_entry = Entry(registra_pedido)
                     nm_estado_entry.insert(0, dados_cliente['data'].nm_estado)
-                    nm_estado_entry.grid(row=11+1, column=1)
+                    nm_estado_entry.grid(row=12, column=1)
 
                     # Nome do País
                     Label(registra_pedido, background="#dde", text="País:").grid(row=12, column=2, padx=10, pady=5, sticky="w")
@@ -129,7 +129,7 @@ def registrar_pedido():
                     Button(registra_pedido, text="Continuar Pedido", command=cria_pedido).grid(row=14, column=2, columnspan=4, padx=10, pady=10)
             else:
                 dados_cliente = Consulta_Cliente.consulta_PJ(cpf_cnpj)
-                print(dados_cliente)
+                (dados_cliente)
                 if not dados_cliente['status']:
                     messagebox.showerror("Erro", dados_cliente['mensagem'])
                 else:

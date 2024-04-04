@@ -19,8 +19,9 @@ def consulta_todos_produtos_por_nome(nm_produto):
     return produtos
 
 def consulta_produto_estoque(cd_produto):
-    produto_estoque = Produto_Estoque.consulta_produto_estoque(cd_produto)
+    produto_estoque = Produto_Estoque.consulta_produto_estoque(cd_produto)    
     return produto_estoque
+
 
 def adiciona_produto_pedido(cd_produto):
     produto = Produto_Estoque.consulta_produto_estoque(cd_produto)

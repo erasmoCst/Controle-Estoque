@@ -12,17 +12,29 @@ class Pedido (Base):
     dt_pedido: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=func.sysdate())
     dt_entregaprevista: Mapped[datetime] = mapped_column(DATE, nullable=False)
 
-    @classmethod
-    def busca_pedidio_nm_cliente(self, nm_cliente):
-        results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
-        return results
+    # @classmethod
+    # def busca_pedidio_nm_cliente(self, nm_cliente):
+    #     results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
+    #     return results
+    
+    # @classmethod
+    # def busca_pedidos_cd_cliente(self, cd_cliente):
+    #     results = session.query(Pedido).filter(Pedido.cd_pessoa == cd_cliente).all()
+    #     return results
     
     @classmethod
-    def busca_pedidos_cd_cliente(self, cd_cliente):
-        results = session.query(Pedido).filter(Pedido.cd_pessoa == cd_cliente).all()
-        return results
-    
-    
+    def atualiza_data_entrega(self, pedido, dt_entrega):
+        try:
+            session.query(Pedido).\
+                    filter(Pedido.cd_pedido == pedido.cd_pedido).\
+                    update({Pedido.dt_entregaprevista: dt_entrega})
+            session.flush()
+            
+            return {'status': 1, 'data': pedido, 'mensagem': "Data de entrega atualizada com sucesso!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
+
     @classmethod
     def persiste_pedido(self, cd_cliente, dt_entregaprevista):
         try:
@@ -30,8 +42,8 @@ class Pedido (Base):
                                 dt_entregaprevista=dt_entregaprevista)
             session.add(novoPedido)
             session.flush()
+            
             return {'status': 1, 'data': novoPedido, 'mensagem': "Pedido cadastrado com sucesso!"}
         except Exception as e: 
             session.rollback()
-            print(f"Erro inesperado:{str (e)}")
-            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Pedido!"}
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}

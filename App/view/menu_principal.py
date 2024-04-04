@@ -9,7 +9,7 @@ from tkinter import *
 #Criação da Janela PRINCIPAL
 app = Tk()
 app.title("App Controle de Estoque")
-app.geometry("800x500")
+app.attributes("-fullscreen", True)
 app.configure(background="#dde")
 
 ## Menu ##

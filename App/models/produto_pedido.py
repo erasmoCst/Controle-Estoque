@@ -14,12 +14,6 @@ class Produto_Pedido (Base):
 
     @classmethod
     def busca_pedidio_cd_cliente(self, cd_cliente):
-        #SELECT A.CD_PEDIDO, D.NM_PESSOA, C.NM_PRODUTO, c.VL_PRODUTO, B.QT_PRODUTO, (B.QT_PRODUTO * C.VL_PRODUTO), A.DT_PEDIDO, A.DT_ENTREGA, C.TP_EMBALAGEMPRODUTO
-        #FROM ctl_estoque.PEDIDO A 
-        #LEFT JOIN ctl_estoque.PRODUTO_PEDIDO B ON A.CD_PEDIDO = B.CD_PEDIDO 
-        #LEFT JOIN ctl_estoque.PRODUTO C ON B.CD_PRODUTO = C.CD_PRODUTO
-        #LEFT JOIN ctl_estoque.PESSOA D ON A.CD_PESSOA = D.CD_PESSOA
-        #WHERE A.CD_PESSOA = cd_cliente
         results = session.query(
         Pedido.cd_pedido,
         Pessoa.nm_pessoa,
@@ -35,6 +29,19 @@ class Produto_Pedido (Base):
             join(Produto, Produto_Pedido.cd_produto == Produto.cd_produto).\
             join(Pessoa, Pedido.cd_pessoa == Pessoa.cd_pessoa).\
             filter(Pedido.cd_pessoa == cd_cliente).all()
-        for result in results:
-            print(result)
+
         return results
+    
+    @classmethod
+    def persiste_produto_pedido(self, cd_pedido, cd_produto, qt_produto):
+        try:
+            produto_pedido = Produto_Pedido(cd_pedido=cd_pedido, 
+                                            cd_produto=cd_produto, 
+                                            qt_produto=qt_produto)
+            session.add(produto_pedido)
+            session.flush()
+            
+            return {'status': 1, 'data': produto_pedido, 'mensagem': "Produto adicionado ao Pedido!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao adicionar Produto ao Pedido!"}

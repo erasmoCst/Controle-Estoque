@@ -23,12 +23,11 @@ class Endereco (Base):
                                     nm_bairro=nm_bairro, 
                                     ds_complemento=ds_complemento, 
                                     cd_municipio=cd_municipio)
-            print("novoEndereco:", novoEndereco)
             session.add(novoEndereco)
             session.flush()
+
             return {'status': 1, 'data': novoEndereco, 'mensagem': "Endereço cadastrado com sucesso!"}
         except Exception as e: 
             session.rollback()
-            print(f"Erro inesperado:{str (e)}")
-            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar endereço!"}
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar endereço!"}
 
