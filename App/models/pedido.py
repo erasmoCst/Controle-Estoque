@@ -23,19 +23,6 @@ class Pedido (Base):
     #     return results
     
     @classmethod
-    def atualiza_data_entrega(self, pedido, dt_entrega):
-        try:
-            session.query(Pedido).\
-                    filter(Pedido.cd_pedido == pedido.cd_pedido).\
-                    update({Pedido.dt_entregaprevista: dt_entrega})
-            session.flush()
-            
-            return {'status': 1, 'data': pedido, 'mensagem': "Data de entrega atualizada com sucesso!"}
-        except Exception as e:
-            session.rollback()
-            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
-
-    @classmethod
     def persiste_pedido(self, cd_cliente, dt_entregaprevista):
         try:
             novoPedido = Pedido(cd_pessoa=cd_cliente, 
@@ -47,3 +34,17 @@ class Pedido (Base):
         except Exception as e: 
             session.rollback()
             return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
+        
+    @classmethod
+    def atualiza_data_entrega(self, cd_pedido, dt_entrega):
+        try:
+            session.query(Pedido).\
+                    filter(Pedido.cd_pedido == cd_pedido).\
+                    update({Pedido.dt_entregaprevista: dt_entrega})
+            session.flush()
+            
+            return {'status': 1, 'data': cd_pedido, 'mensagem': "Data de entrega atualizada com sucesso!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
+        

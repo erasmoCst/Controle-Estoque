@@ -1,12 +1,12 @@
 from tkinter import Button, Entry, Label, Toplevel, ttk, StringVar
 from tkinter.messagebox import showinfo
 from tkcalendar import DateEntry
-from controller.cadastro_pedido import Pedido
+from controller.cadastro_pedido import Cadastro_Pedido, Pedido
 
 def resumo_pedido(dados):
     resumo_pedido = Toplevel()
     resumo_pedido.title("Resumo Pedido")
-    resumo_pedido.geometry("720x500")
+    resumo_pedido.geometry("720x550")
     resumo_pedido.configure(background="#dde")
 
     Label(resumo_pedido, text=" --- Resumo do Pedido ---", background='#dde', anchor="w").grid(row=0, column=0, pady=10)
@@ -99,6 +99,7 @@ def resumo_pedido(dados):
     nm_pais_entry.grid(row=8, column=2)
     
     ## Produtos
+    Label(resumo_pedido, text="Itens Pedido", background='#dde', anchor="w").grid(row=9, column=0)
     tview = ttk.Treeview(resumo_pedido, columns=("cd", "nm", "emb", "qt", "vl_un", "vl_tt"), show='headings')
     tview.heading("cd", text="Código")
     tview.heading("nm", text="Nome")
@@ -114,7 +115,7 @@ def resumo_pedido(dados):
     tview.column("vl_un", minwidth=0, width=100)
     tview.column("vl_tt",  minwidth=0, width=100)
 
-    tview.grid(row=9, column=0, columnspan=4, padx=10, pady=10)
+    tview.grid(row=10, column=0, columnspan=4, padx=10, pady=10)
 
     for item in dados['produtos']:
         tview.insert("", "end", values=(
@@ -124,11 +125,38 @@ def resumo_pedido(dados):
             item['qt_produto'],
             item['produto'].vl_produto,
             item['qt_produto']*item['produto'].vl_produto))
+
+    #{'pedido': pedido, 'produtos': produtos_pedido}
+
+    qt_itens_var = StringVar()
+    qt_itens_var.set(len(dados['produtos']))
+    Label(resumo_pedido, text="Total de Itens:", background='#dde', anchor="w").grid(row=11, column=0)
+    qt_itens_entry = Entry(resumo_pedido, textvariable=qt_itens_var, state="readonly")
+    qt_itens_entry.grid(row=11, column=1)
+
+    vl_total_var = StringVar()
+    vl_total_var.set(Cadastro_Pedido.calcula_valor_total_pedido(dados['produtos'])['data'])
+    Label(resumo_pedido, text="Valor:", background='#dde', anchor="w").grid(row=11, column=2)
+    vl_total_entry = Entry(resumo_pedido, textvariable=vl_total_var, state="readonly")
+    vl_total_entry.grid(row=11, column=3)
     
-    Label(resumo_pedido, text="Data Entrega", background='#dde', anchor="w").grid(row=10, column=0)
+    Label(resumo_pedido, text="Data Entrega", background='#dde', anchor="w").grid(row=12, column=0)
     dt_entrega_entry = DateEntry(resumo_pedido, locale='pt_BR', date_pattern='dd/mm/yyyy', anchor="w")
-    dt_entrega_entry.grid(row=10, column=1)
+    dt_entrega_entry.grid(row=12, column=1)
 
-    Button(resumo_pedido, text="Finalizar Pedido", command=lambda: Pedido.finalizar_pedido(dados, dt_entrega_entry.get()), anchor="w").grid(row=10, column=3)
+    def finaliza_pedido():
+        response = Cadastro_Pedido.finalizar_pedido(
+            {'cd_pedido': dados['pedido']['dados_pedido'].cd_pedido, 'dt_entrega': dt_entrega_entry.get()}, 
+            dados['produtos'])
+        if not response['status']:
+            showinfo("Erro", response['mensagem'])
+        else: 
+            showinfo("Pedido", "Pedido finalizado com sucesso!")
+            resumo_pedido.destroy()
 
-    showinfo("Pedido", "Pedido finalizado com sucesso!")
+    Button(resumo_pedido, text="Finalizar Pedido", command=finaliza_pedido, anchor="w").\
+        grid(row=12, column=3, pady=10)
+
+    
+
+    
