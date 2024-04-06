@@ -17,7 +17,15 @@ def preencher_tv(tree, produtos_pedido=None):
             item['qt_produto'],
             item['produto'].vl_produto,
             item['qt_produto'] * item['produto'].vl_produto))
+        
+def remover_tv(tree, produtos_pedido, produto=None):
+    for i in tree.get_children():
+        tree.delete(i)
 
+    if produto:
+        produtos_pedido.remove(produto)
+
+    preencher_tv(tree, produtos_pedido)
 
 def itens_pedido(pedido):
     itens_pedido = Toplevel()
@@ -68,7 +76,17 @@ def itens_pedido(pedido):
     def atualizar_produto_selecionado(cd_produto):
         consultar_produto(cd_produto)
 
+    def remover_produto():
+        item = tview.selection()[0]
+        remover_tv(tview, produtos_pedido, produtos_pedido[tview.index(item)])
+        # produtos_pedido.\
+        #     remove({'produto': 
+        #             {'cd_produto': tview.item(item, option='values')[0]}, 
+        #             'qt_produto': tview.item(item, option='values')[3]})
+        # tview.delete(item)
+
     Button(itens_pedido, text="Buscar Produto", command=pesquisa_produto).grid(row=1, column=3)
+    Button(itens_pedido, text="Remover Produto", command=remover_produto).grid(row=5, column=0, pady=10)
     Button(itens_pedido, text="Finalizar Pedido", command=lambda: resumo_pedido({'pedido': pedido, 'produtos': produtos_pedido}), anchor="w").grid(row=5, column=1, columnspan=2, padx=10, pady=10)
 
     tview = ttk.Treeview(itens_pedido, columns=("cd", "nm", "emb", "qt", "vl_un", "vl_tt"), show='headings')

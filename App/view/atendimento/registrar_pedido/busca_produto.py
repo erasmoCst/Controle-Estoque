@@ -39,9 +39,7 @@ def busca_produto(atualizar_produto_selecionado):
 
     def seleciona_produto(tree):
         item = tree.selection()[0]
-
         atualizar_produto_selecionado(tree.item(item, option='values')[0])
-
         busca_produto.destroy()
 
     Button(busca_produto, text="Consultar Código", command=None).grid(row=1, column=1)
