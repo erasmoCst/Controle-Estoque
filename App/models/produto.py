@@ -15,28 +15,28 @@ class Produto (Base):
         try:
             produtos = session.query(Produto).order_by(Produto.nm_produto).all()
             return {'status': 1, 'data': produtos, 'mensagem': "Produtos encontrados!"}
-        except:
-            return {'status': 0, 'data': "", 'mensagem': "Nenhum produto cadastrado!"}
+        except Exception as e: 
+            return {'status': 0, 'data': e, 'mensagem': "Nenhum produto cadastrado!"}
 
     def busca_produto_por_nome(nm_produto):
         try:
             produto = session.query(Produto).filter(Produto.nm_produto == nm_produto).first()
             return {'status': 1, 'data': produto, 'mensagem': "Produto encontrado!"}
-        except:
-            return {'status': 0, 'data': "", 'mensagem': "Produto não cadastrado! Verifique o nome informado!"}
+        except Exception as e: 
+            return {'status': 0, 'data': e, 'mensagem': "Produto não cadastrado! Verifique o nome informado!"}
 
     def busca_todos_produtos_por_nome(nm_produto):
         try:
             produtos = session.query(Produto).filter(Produto.nm_produto.like(f"%{nm_produto}%")).all()
             return {'status': 1, 'data': produtos, 'mensagem': "Produtos encontrados!"}
-        except:
-            return {'status': 0, 'data': "", 'mensagem': "Nenhum produto com cadastrado! Verifique o nome informado!"}
+        except Exception as e: 
+            return {'status': 0, 'data': e, 'mensagem': "Nenhum produto com cadastrado! Verifique o nome informado!"}
 
     def busca_produto_por_codigo(cd_produto):
         try:
             produto = session.query(Produto).filter(Produto.cd_produto == cd_produto).first()
             return {'status': 1, 'data': produto, 'mensagem': "Produto encontrado!"}
-        except:
-            return {'status': 0, 'data': "", 'mensagem': "Produto não cadastrado! Verifique o código informado!"}
+        except Exception as e: 
+            return {'status': 0, 'data': e, 'mensagem': "Produto não cadastrado! Verifique o código informado!"}
 
         

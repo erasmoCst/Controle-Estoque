@@ -28,5 +28,5 @@ class Produto_Estoque (Base):
                 first()
             
             return {"status": "1", "data": produto_estoque, "mensagem": "Produto consultado com sucesso"}
-        except:
-            return {"status": "0", "data": "", "mensagem": "Erro ao consultar o produto no estoque"}
+        except Exception as e: 
+            return {"status": "0", "data": e, "mensagem": "Erro ao consultar o produto no estoque"}

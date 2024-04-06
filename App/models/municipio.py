@@ -17,7 +17,7 @@ class Municipio (Base):
                 filter_by(nm_municipio = nome_municipio, nm_estado = nome_estado, nm_pais = nome_pais).\
                 one_or_none()
             return {'status': 1, 'data': municipio.cd_municipio, 'mensagem': "Município válido!"}
-        except:
-            return {'status': 0, 'data': "", 'mensagem': "Município, Estado ou País inválido! Verifique os dados e tente novamente."}
+        except Exception as e: 
+            return {'status': 0, 'data': e, 'mensagem': "Município, Estado ou País inválido! Verifique os dados e tente novamente."}
 
         

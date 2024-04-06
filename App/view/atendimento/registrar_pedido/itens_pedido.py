@@ -32,7 +32,6 @@ def itens_pedido(pedido):
     itens_pedido.title("Itens do Pedido")
     itens_pedido.geometry("720x500")
     itens_pedido.configure(background="#dde")
-    (pedido['dados_pedido'])
     produtos_pedido = []
 
     Label(itens_pedido, text=f"Pedido: {pedido['dados_pedido'].cd_pedido}", background='#dde', anchor="w").grid(row=0, column=0, pady=10)
@@ -77,13 +76,8 @@ def itens_pedido(pedido):
         consultar_produto(cd_produto)
 
     def remover_produto():
-        item = tview.selection()[0]
-        remover_tv(tview, produtos_pedido, produtos_pedido[tview.index(item)])
-        # produtos_pedido.\
-        #     remove({'produto': 
-        #             {'cd_produto': tview.item(item, option='values')[0]}, 
-        #             'qt_produto': tview.item(item, option='values')[3]})
-        # tview.delete(item)
+        if not tview.selection(): return
+        remover_tv(tview, produtos_pedido, produtos_pedido[tview.index(tview.selection()[0])])
 
     Button(itens_pedido, text="Buscar Produto", command=pesquisa_produto).grid(row=1, column=3)
     Button(itens_pedido, text="Remover Produto", command=remover_produto).grid(row=5, column=0, pady=10)

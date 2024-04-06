@@ -98,20 +98,27 @@ def cadastro_cliente_PF():
     nm_pais_entry.grid(row=12, column=3)
     
     def submit_cadastro():
-        response = Cadastro_Pessoa.cadastrar_PF(dados_PF = {'nr_cpf':nr_cpf_entry.get(),
-                                                    'dt_nascimento':dt_nascimento_entry.get(),
-                                                    'tp_genero':tp_genero_entry.get()},
-                                dados_endereco = {'nr_cep': nr_cep_entry.get(),
-                                                'nm_logradouro': nm_logradouro_entry.get(),
-                                                'nr_endereco': nr_endereco_entry.get(),
-                                                'ds_complemento': ds_complemento_entry.get(),
-                                                'nm_bairro': nm_bairro_entry.get(),
-                                                'nm_municipio': nm_cidade_entry.get(),
-                                                'nm_estado': nm_estado_entry.get(),
-                                                'nm_pais': nm_pais_entry.get()},
-                                dados_pessoa = {'nm_cliente': nm_cliente_entry.get(),
-                                                'nr_telefone': nr_telefone_entry.get(),
-                                                'nm_email': nm_email_entry.get()})
+        response = Cadastro_Pessoa.cadastrar_PF(
+            dados_PF={
+                'nr_cpf':nr_cpf_entry.get(),
+                'dt_nascimento':dt_nascimento_entry.get(),
+                'tp_genero':tp_genero_entry.get()
+            },
+            dados_endereco={
+                'nr_cep': nr_cep_entry.get(),
+                'nm_logradouro': nm_logradouro_entry.get(),
+                'nr_endereco': nr_endereco_entry.get(),
+                'ds_complemento': ds_complemento_entry.get(),
+                'nm_bairro': nm_bairro_entry.get(),
+                'nm_municipio': nm_cidade_entry.get(),
+                'nm_estado': nm_estado_entry.get(),
+                'nm_pais': nm_pais_entry.get()
+            },
+            dados_pessoa={
+                'nm_cliente': nm_cliente_entry.get(),
+                'nr_telefone': nr_telefone_entry.get(),
+                'nm_email': nm_email_entry.get()
+            })
         showinfo("Cliente", response['mensagem'])
 
     submit_button = Button(cadastro_cliente, text="Cadastrar Cliente",

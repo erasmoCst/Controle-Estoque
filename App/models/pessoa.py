@@ -21,12 +21,24 @@ class Pessoa (Base):
             session.flush()
             
             return {'status': 1, 'data': novaPessoa, 'mensagem': "Pessoa cadastrada com sucesso!"}
-        except: 
+        except Exception as e:  
             session.rollback()
-            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar pessoa!"}
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar pessoa!"}
 
     @classmethod
     def busca_clientes_nome(self, nm_cliente):
         results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
         return results
-        
+
+    @classmethod
+    def atualiza_pessoa(self, cd_pessoa, nm_cliente, nr_telefone, nm_email, cd_endereco):
+        try:
+            session.query(Pessoa).\
+                    filter(Pessoa.cd_pessoa == cd_pessoa).\
+                    update({Pessoa.nm_pessoa: nm_cliente, Pessoa.nr_telefone: nr_telefone, Pessoa.nm_email: nm_email, Pessoa.cd_endereco: cd_endereco})
+            session.flush()
+            
+            return {'status': 1, 'data': cd_pessoa, 'mensagem': "Pessoa atualizada com sucesso!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao atualizar pessoa!"}        

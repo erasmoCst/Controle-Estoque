@@ -30,4 +30,21 @@ class Endereco (Base):
         except Exception as e: 
             session.rollback()
             return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar endereço!"}
+        
+    @classmethod
+    def atualiza_endereco(self, cd_endereco, nr_cep, nm_logradouro, nr_endereco, nm_bairro, ds_complemento, cd_municipio):
+        try:
+            session.query(Endereco).\
+                    filter(Endereco.cd_endereco == cd_endereco).\
+                    update({Endereco.nr_cep: nr_cep, 
+                            Endereco.nm_logradouro: nm_logradouro, 
+                            Endereco.nr_endereco: nr_endereco, 
+                            Endereco.nm_bairro: nm_bairro, 
+                            Endereco.ds_complemento: ds_complemento, 
+                            Endereco.cd_municipio: cd_municipio})
+            session.flush()
 
+            return {'status': 1, 'data': cd_endereco, 'mensagem': "Endereço atualizado com sucesso!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao atualizar endereço!"}

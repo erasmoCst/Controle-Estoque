@@ -15,6 +15,8 @@ from view.gestao.produto.lista_produtos import *
 from view.gestao.produto.remove_produto import remover_produto
 
 from view.gestao.cliente.lista_clientes import lista_pessoas
+from view.gestao.cliente.atualiza_pessoa_fisica import atualiza_pessoa_fisica
+from view.gestao.cliente.atualiza_pessoa_juridica import atualiza_pessoa_juridica
 
 from tkinter import *
 
@@ -34,31 +36,30 @@ Barra_menu = Menu(app)
 
 atendimento = Menu(Barra_menu, tearoff=0)
 atendimento.add_command(label="Registrar Pedido",command=registrar_pedido)
-atendimento.add_command(label="Atender Pedido",command= None)
 Barra_menu.add_cascade(label="Atendimento",menu=atendimento)
 
 
 # Controle de estoque
 controle_est = Menu(Barra_menu, tearoff=0)
-controle_est.add_command(label="Produtos em Estoque",command= lista_produtos_estoque)
+controle_est.add_command(label="Produtos em Estoque",command=lista_produtos_estoque)
 controle_est.add_separator()
-controle_est.add_command(label="Consultar Produto",command= consultar_produto_estoque)
+controle_est.add_command(label="Consultar Produto",command=consultar_produto_estoque)
 controle_est.add_separator()
-controle_est.add_command(label="Alterar Locação",command= lista_prod_locacao)
+controle_est.add_command(label="Alterar Locação",command=lista_prod_locacao)
 Barra_menu.add_cascade(label="Controle de Estoque",menu=controle_est)
 
 # Gestão de produtos 
 gestao_prod = Menu(Barra_menu, tearoff=0)
-gestao_prod.add_command(label="Atualização de Produto",command= atualiza_produto)
-gestao_prod.add_command(label="Remoção de Produto",command= remover_produto)
+gestao_prod.add_command(label="Atualização de Produto",command=atualiza_produto)
+gestao_prod.add_command(label="Remoção de Produto",command=remover_produto)
 gestao_prod.add_separator()
 gestao_prod.add_command(label="Lista de Produtos",command= lista_produtos)
 Barra_menu.add_cascade(label="Gestão de Produtos",menu=gestao_prod)
 
 # Gestão de  Clientes
 gestao_cliente = Menu(Barra_menu, tearoff=0)
-gestao_cliente.add_command(label="Atualização de Pessoa Física",command= None)
-gestao_cliente.add_command(label="Atualização de Pessoa Jurídica",command= None)
+gestao_cliente.add_command(label="Atualização de Pessoa Física",command=atualiza_pessoa_fisica)
+gestao_cliente.add_command(label="Atualização de Pessoa Jurídica",command=atualiza_pessoa_juridica)
 gestao_cliente.add_separator()
 gestao_cliente.add_command(label="Remoção de Pessoa Física",command= None)
 gestao_cliente.add_command(label="Remoção de Pessoa Jurídica",command= None)

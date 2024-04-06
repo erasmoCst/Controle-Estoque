@@ -29,20 +29,23 @@ class Pessoa_Juridica (Base):
         return {'status': 1, 'data':"", 'mensagem': "Razão Social válida para cadastro!"}
     
     @classmethod
-    def busca_dados_cliente_CPF(self, CNPJ):
-        dados_cliente = session.query(Pessoa.nm_pessoa, 
-                                    Pessoa.nr_telefone, 
-                                    Pessoa.nm_email,
-                                    Pessoa_Juridica.nr_cnpj,
-                                    Pessoa_Juridica.nm_razaosocial,
-                                    Endereco.nr_cep,
-                                    Endereco.nm_logradouro,
-                                    Endereco.nr_endereco,
-                                    Endereco.nm_bairro,
-                                    Endereco.ds_complemento,
-                                    Municipio.nm_municipio,
-                                    Municipio.nm_estado,
-                                    Municipio.nm_pais).\
+    def busca_dados_cliente_CNPJ(self, CNPJ):
+        dados_cliente = session.query(
+            Pessoa.cd_pessoa,
+            Pessoa.nm_pessoa, 
+            Pessoa.nr_telefone, 
+            Pessoa.nm_email,
+            Pessoa_Juridica.nr_cnpj,
+            Pessoa_Juridica.nm_razaosocial,
+            Endereco.cd_endereco,
+            Endereco.nr_cep,
+            Endereco.nm_logradouro,
+            Endereco.nr_endereco,
+            Endereco.nm_bairro,
+            Endereco.ds_complemento,
+            Municipio.nm_municipio,
+            Municipio.nm_estado,
+            Municipio.nm_pais).\
         select_from(Pessoa_Juridica).\
         join(Pessoa, Pessoa.cd_pessoa == Pessoa_Juridica.cd_pessoa).\
         join(Endereco, Endereco.cd_endereco == Pessoa.cd_endereco).\

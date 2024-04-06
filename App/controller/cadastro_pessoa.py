@@ -14,37 +14,80 @@ class Cadastro_Pessoa ():
             Base.rollback()
             return valida_CPF
         else:
-            municipio = Municipio.get_cd_municipio(dados_endereco['nm_municipio'], 
-                                                    dados_endereco['nm_estado'], 
-                                                    dados_endereco['nm_pais'])
+            municipio = Municipio.get_cd_municipio(
+                dados_endereco['nm_municipio'], 
+                dados_endereco['nm_estado'], 
+                dados_endereco['nm_pais'])
             if(not municipio['status']):
                 Base.rollback()
                 return municipio
             else:
                 try:
-                    endereco = Endereco.persiste_endereco(dados_endereco['nr_cep'], 
-                                                        dados_endereco['nm_logradouro'], 
-                                                        dados_endereco['nr_endereco'],
-                                                        dados_endereco['nm_bairro'], 
-                                                        dados_endereco['ds_complemento'], 
-                                                        municipio['data'])
+                    endereco = Endereco.persiste_endereco(
+                        dados_endereco['nr_cep'], 
+                        dados_endereco['nm_logradouro'], 
+                        dados_endereco['nr_endereco'],
+                        dados_endereco['nm_bairro'], 
+                        dados_endereco['ds_complemento'], 
+                        municipio['data'])
                     if(not endereco['status']):
                         Base.rollback()
                         return endereco
                     else:
-                        pessoa = Pessoa.persiste_pessoa(dados_pessoa['nm_cliente'], 
-                                                        dados_pessoa['nr_telefone'], 
-                                                        dados_pessoa['nm_email'],
-                                                        endereco['data'].cd_endereco)
+                        pessoa = Pessoa.persiste_pessoa(
+                            dados_pessoa['nm_cliente'], 
+                            dados_pessoa['nr_telefone'],
+                            dados_pessoa['nm_email'],
+                            endereco['data'].cd_endereco)
                         if(not pessoa['status']):
                             Base.rollback()
                             return pessoa
                         else:
                             Base.commit()
-                            return {'status': 1, 'mensagem': "Cliente PF cadastrado com sucesso!"}
-                except  :
-                    return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Cliente PF!"}
+                            return {'status': 1, 'data': pessoa,'mensagem': "Cliente PF cadastrado com sucesso!"}
+                except Exception as e: 
+                    return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Cliente PF!"}
     
+    def atualizar_PF(dados_PF, dados_endereco, dados_pessoa):
+        municipio = Municipio.get_cd_municipio(
+            dados_endereco['nm_municipio'], 
+            dados_endereco['nm_estado'], 
+            dados_endereco['nm_pais'])
+        
+        if(not municipio['status']):
+            Base.rollback()
+            return municipio
+        else:
+            try:
+                endereco = Endereco.atualiza_endereco(
+                    dados_endereco['nr_cep'], 
+                    dados_endereco['nr_cep'], 
+                    dados_endereco['nm_logradouro'], 
+                    dados_endereco['nr_endereco'],
+                    dados_endereco['nm_bairro'], 
+                    dados_endereco['ds_complemento'], 
+                    municipio['data'])
+                if(not endereco['status']):
+                    Base.rollback()
+                    return endereco
+                else:
+                    pessoa = Pessoa.atualiza_pessoa(
+                        dados_pessoa['cd_pessoa'],
+                        dados_pessoa['nm_cliente'], 
+                        dados_pessoa['nr_telefone'], 
+                        dados_pessoa['nm_email'],
+                        dados_endereco['cd_endereco'])
+                    if(not pessoa['status']):
+                        Base.rollback()
+                        return pessoa
+                    else:
+                        Base.commit()
+                        return {'status': 1, 'data': pessoa, 'mensagem': "Cliente PF atualizado com sucesso!"}
+            except Exception as e: 
+                Base.rollback()
+                print({'status': 0, 'data': e, 'mensagem': "Erro ao atualizar Cliente PF!"})
+                return {'status': 0, 'data': e, 'mensagem': "Erro ao atualizar Cliente PF!"}
+
     def cadastrar_PJ(dados_PJ, dados_endereco, dados_pessoa):
         valida_CNPJ = Pessoa_Juridica.verifica_CNPJ_existe(dados_PJ['nr_cnpj'])
         valida_razao_social = Pessoa_Juridica.verifica_razao_social_existe(dados_PJ['nm_razao_social'])
@@ -56,39 +99,81 @@ class Cadastro_Pessoa ():
             Base.rollback()
             return valida_razao_social
         else:
-            municipio = Municipio.get_cd_municipio(dados_endereco['nm_municipio'], 
-                                                    dados_endereco['nm_estado'], 
-                                                    dados_endereco['nm_pais'])
+            municipio = Municipio.get_cd_municipio(
+                dados_endereco['nm_municipio'], 
+                dados_endereco['nm_estado'], 
+                dados_endereco['nm_pais'])
             if(not municipio['status']):
                 Base.rollback()
                 return municipio
             
             else:
                 try:
-                    endereco = Endereco.persiste_endereco(dados_endereco['nr_cep'], 
-                                                        dados_endereco['nm_logradouro'], 
-                                                        dados_endereco['nr_endereco'],
-                                                        dados_endereco['nm_bairro'], 
-                                                        dados_endereco['ds_complemento'], 
-                                                        municipio['data'])
+                    endereco = Endereco.persiste_endereco(
+                        dados_endereco['nr_cep'], 
+                        dados_endereco['nm_logradouro'], 
+                        dados_endereco['nr_endereco'],
+                        dados_endereco['nm_bairro'], 
+                        dados_endereco['ds_complemento'], 
+                        municipio['data'])
                     if(not endereco['status']):
                         Base.rollback()
                         return endereco
                     else:
                         try:
-                            pessoa = Pessoa.persiste_pessoa(dados_pessoa['nm_fantasia'], 
-                                                            dados_pessoa['nr_telefone'], 
-                                                            dados_pessoa['nm_email'],
-                                                            endereco['data'].cd_endereco)
+                            pessoa = Pessoa.persiste_pessoa(
+                                dados_pessoa['nm_fantasia'], 
+                                dados_pessoa['nr_telefone'], 
+                                dados_pessoa['nm_email'],
+                                endereco['data'].cd_endereco)
                             if(not pessoa['status']):
                                 ("pessoa['status']",pessoa['status'])
                                 return pessoa
                             else:
                                 Base.commit()
-                                return {'status': 1, 'mensagem': "Cliente PJ cadastrado com sucesso!"}
-                        except:
+                                return {'status': 1, 'data': pessoa,'mensagem': "Cliente PJ cadastrado com sucesso!"}
+                        except Exception as e: 
                             Base.rollback()
-                            return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Pessoa!"}
-                except:
+                            return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pessoa!"}
+                except Exception as e: 
                     Base.rollback()
-                    return {'status': 0, 'data': "", 'mensagem': "Erro ao cadastrar Endereço!"}
+                    return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Endereço!"}
+                
+    def atualizar_PJ(dados_PJ, dados_endereco, dados_pessoa):
+        municipio = Municipio.get_cd_municipio(
+            dados_endereco['nm_municipio'], 
+            dados_endereco['nm_estado'], 
+            dados_endereco['nm_pais'])
+        
+        if(not municipio['status']):
+            Base.rollback()
+            return municipio
+        else:
+            try:
+                endereco = Endereco.atualiza_endereco(
+                    dados_endereco['nr_cep'], 
+                    dados_endereco['nr_cep'], 
+                    dados_endereco['nm_logradouro'], 
+                    dados_endereco['nr_endereco'],
+                    dados_endereco['nm_bairro'], 
+                    dados_endereco['ds_complemento'], 
+                    municipio['data'])
+                if(not endereco['status']):
+                    Base.rollback()
+                    return endereco
+                else:
+                    pessoa = Pessoa.atualiza_pessoa(
+                        dados_pessoa['cd_pessoa'],
+                        dados_pessoa['nm_fantasia'], 
+                        dados_pessoa['nr_telefone'], 
+                        dados_pessoa['nm_email'],
+                        dados_endereco['cd_endereco'])
+                    if(not pessoa['status']):
+                        Base.rollback()
+                        return pessoa
+                    else:
+                        Base.commit()
+                        return {'status': 1, 'data': pessoa, 'mensagem': "Cliente PJ atualizado com sucesso!"}
+            except Exception as e: 
+                Base.rollback()
+                return {'status': 0, 'data': e, 'mensagem': "Erro ao atualizar Cliente PJ!"}

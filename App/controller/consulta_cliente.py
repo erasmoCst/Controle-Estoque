@@ -8,4 +8,4 @@ class Consulta_Cliente ():
         
 
     def consulta_PJ(cpf_cnpj):
-        return (Pessoa_Juridica.busca_dados_cliente_CPF(cpf_cnpj))
+        return (Pessoa_Juridica.busca_dados_cliente_CNPJ(cpf_cnpj))

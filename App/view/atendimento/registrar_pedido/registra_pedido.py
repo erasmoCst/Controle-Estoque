@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import Toplevel, Label, Entry, Button
 from tkinter import messagebox
+from controller.cadastro_pessoa import Cadastro_Pessoa
 from controller.cadastro_pedido import Cadastro_Pedido
 from view.atendimento.registrar_pedido.itens_pedido import itens_pedido
 from controller.consulta_cliente import Consulta_Cliente
@@ -118,14 +119,45 @@ def registrar_pedido():
                     nm_pais_entry.insert(0, dados_cliente['data'].nm_pais)
                     nm_pais_entry.grid(row=12, column=3)
 
+                    def atualiza_dados_cliente():
+                        print(dados_cliente['data'])
+                        response = Cadastro_Pessoa.atualizar_PF(
+                            {
+                                'cd_pessoa': dados_cliente['data'].cd_pessoa,
+                                'nr_cpf': dados_cliente['data'].nr_cpf,
+                                'dt_nascimento': dt_nascimento_entry.get(),
+                                'tp_genero': tp_genero_entry.get()
+                            },
+                            {
+                                'cd_endereco': dados_cliente['data'].cd_endereco,
+                                'nm_logradouro': nm_logradouro_entry.get(),
+                                'nr_endereco': nr_endereco_entry.get(),
+                                'nm_bairro': nm_bairro_entry.get(),
+                                'ds_complemento': ds_complemento_entry.get(),
+                                'nr_cep': nr_cep_entry.get(),
+                                'nm_municipio': nm_cidade_entry.get(),
+                                'nm_estado': nm_estado_entry.get(),
+                                'nm_pais': nm_pais_entry.get()
+                            },
+                            {
+                                'cd_pessoa': dados_cliente['data'].cd_pessoa, 
+                                'nm_cliente': nm_cliente_entry.get(), 
+                                'nr_telefone': nr_telefone_entry.get(), 
+                                'nm_email': nm_email_entry.get()
+                            }
+                        )
+                            
+                        messagebox.showerror("Erro", response['mensagem']) if not response['status'] else messagebox.showinfo("Sucesso", response['mensagem'])
+                        
                     def cria_pedido():
                         dados_pedido = Cadastro_Pedido.criar_pedido(dados_cliente['data'].cd_pessoa)
                         if not dados_pedido['status']:
                             messagebox.showerror("Erro", dados_pedido['mensagem'])
                         else: 
                             itens_pedido({'dados_cliente':dados_cliente['data'], 'dados_pedido':dados_pedido['data']})
+                            registra_pedido.destroy()
 
-                    Button(registra_pedido, text="Atualizar dados cliente", command=None).grid(row=14, column=0, padx=10, pady=10, sticky="ew")
+                    Button(registra_pedido, text="Atualizar dados cliente", command=atualiza_dados_cliente).grid(row=14, column=0, padx=10, pady=10, sticky="ew")
                     Button(registra_pedido, text="Continuar Pedido", command=cria_pedido).grid(row=14, column=2, columnspan=4, padx=10, pady=10)
             else:
                 dados_cliente = Consulta_Cliente.consulta_PJ(cpf_cnpj)

@@ -31,6 +31,7 @@ class Pessoa_Fisica (Base):
                                       Pessoa_Fisica.nr_cpf,
                                       Pessoa_Fisica.dt_nascimento,
                                       Pessoa_Fisica.tp_genero,
+                                      Endereco.cd_endereco,
                                       Endereco.nr_cep,
                                       Endereco.nm_logradouro,
                                       Endereco.nr_endereco,
