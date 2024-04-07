@@ -7,6 +7,9 @@ from view.controle_estoque.lista_estoque import lista_produtos_estoque
 from view.controle_estoque.consulta_produto import consultar_produto_estoque
 from view.controle_estoque.altera_locacao import lista_prod_locacao
 
+from view.atendimento.atender_pedido import atender_pedido
+from view.atendimento.lista_pedidos import lista_pedidos
+
 from view.gestao.produto.cadastro_produto import cadastro_produto
 from view.gestao.cliente.cadastro_cliente import cadastro_cliente_PF,cadastro_cliente_PJ
 
@@ -37,6 +40,9 @@ Barra_menu = Menu(app)
 
 atendimento = Menu(Barra_menu, tearoff=0)
 atendimento.add_command(label="Registrar Pedido",command=registrar_pedido)
+atendimento.add_command(label="Atender Pedido",command=atender_pedido)
+atendimento.add_separator()
+atendimento.add_command(label="Lista de Pedidos",command=lista_pedidos)
 Barra_menu.add_cascade(label="Atendimento",menu=atendimento)
 
 

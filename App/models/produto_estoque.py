@@ -14,7 +14,7 @@ class Produto_Estoque (Base):
     qt_produtoestoque : Mapped[float] = mapped_column(NUMERIC(7,2), nullable=False) 
     qt_reservado: Mapped[float] = mapped_column(NUMERIC(7,2), nullable=False)
     dt_validade: Mapped[datetime.date] = mapped_column(DATE, nullable=False)
-    dt_produtoestoque: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=0)
+    dt_produtoestoque: Mapped[datetime] = mapped_column(DATE, nullable=False, default=0)
 
     def consulta_produto_estoque(cd_produto):
         try:

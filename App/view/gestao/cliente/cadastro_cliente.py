@@ -2,12 +2,8 @@ from tkinter import *
 from tkinter.messagebox import showinfo
 from tkinter.ttk import *
 from controller.cadastro_pessoa import *
-from config.DBConnection import *
-
-#FUNCÕES DE "Cadastro de Cliente"
 
 def cadastro_cliente_PF():
-    # Função de cadastro de clientes
     cadastro_cliente = Toplevel()
     cadastro_cliente.title("Cadastro de Cliente Pessoa Física")
     cadastro_cliente.geometry("700x500")

@@ -13,6 +13,33 @@ class Pedido (Base):
     dt_pedido: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=func.sysdate())
     dt_entregaprevista: Mapped[datetime] = mapped_column(DATE, nullable=False)
 
+    @classmethod
+    def busca_todos_pedidos(self):
+        try:
+            results = session.query(Pedido).all()
+            return {'status': 1, 'data': results, 'mensagem': "Pedidos encontrados!"}
+        
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedidos!"}
+
+    @classmethod
+    def busca_pedido_por_codigo(self, cd_pedido):
+        try:
+            results = session.query(Pedido).filter(Pedido.cd_pedido == cd_pedido).all()
+            return {'status': 1, 'data': results, 'mensagem': "Pedido encontrado!"}
+        
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedido!"}
+    
+    @classmethod
+    def busca_pedido_por_codigo_cliente(self, cd_cliente):
+        try:
+            results = session.query(Pedido).filter(Pedido.cd_pessoa == cd_cliente).all()
+            return {'status': 1, 'data': results, 'mensagem': "Pedido encontrado!"}
+        
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedido!"}
+        
     # @classmethod
     # def busca_pedidio_nm_cliente(self, nm_cliente):
     #     results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()

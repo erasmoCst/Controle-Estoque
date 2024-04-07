@@ -33,7 +33,14 @@ def busca_produto(atualizar_produto_selecionado):
     tview.heading("Nome", text="Nome")
     tview.heading("Descrição", text="Descrição")
     tview.heading("Embalagem", text="Embalagem")
+
+    tview.column("Código", minwidth=0, width=50)
+    tview.column("Nome", minwidth=0, width=100)
+    tview.column("Descrição", minwidth=0, width=200)
+    tview.column("Embalagem", minwidth=0, width=50)
+    
     tview.grid(row=2, column=0, columnspan=4, padx=10, pady=10)
+    
     
     preencher_tv(tview)
 
@@ -42,6 +49,6 @@ def busca_produto(atualizar_produto_selecionado):
         atualizar_produto_selecionado(tree.item(item, option='values')[0])
         busca_produto.destroy()
 
-    Button(busca_produto, text="Consultar Código", command=None).grid(row=1, column=1)
+    # Button(busca_produto, text="Consultar Código", command=None).grid(row=1, column=1)
     Button(busca_produto, text="Consultar Nome", command=lambda: preencher_tv(tview, nm_produto_entry.get())).grid(row=1, column=3)
-    Button(busca_produto, text="Selecionar", command=lambda:seleciona_produto(tview)).grid(row=3, column=0, columnspan=4, padx=10, pady=10)
+    Button(busca_produto, text="Selecionar", command=lambda: seleciona_produto(tview)).grid(row=3, column=0, columnspan=4, padx=10, pady=10)
