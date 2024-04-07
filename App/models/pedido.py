@@ -8,7 +8,8 @@ from config.DBConnection import *
 class Pedido (Base):
     __tablename__ = 'PEDIDO'
     cd_pedido: Mapped[int] = mapped_column(INTEGER, nullable=False, primary_key=True)
-    cd_pessoa: Mapped[int] = mapped_column(INTEGER, ForeignKey(Pessoa.cd_pessoa), nullable=False) 
+    cd_pessoa: Mapped[int] = mapped_column(INTEGER, ForeignKey(Pessoa.cd_pessoa), nullable=False)
+    in_atendido: Mapped[str] = mapped_column(CHAR(1), nullable=False, server_default='N') 
     dt_pedido: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=func.sysdate())
     dt_entregaprevista: Mapped[datetime] = mapped_column(DATE, nullable=False)
 
