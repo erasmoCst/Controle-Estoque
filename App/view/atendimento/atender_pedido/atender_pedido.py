@@ -1,6 +1,5 @@
-from tkinter import * 
-from tkinter.messagebox import showinfo
-from tkinter.ttk import *
+from tkinter.ttk import Treeview
+from tkinter import Button, Entry, Label, Toplevel
 from view.atendimento.atender_pedido.detalhar_pedido import detalhes_pedido
 from controller.consulta_pedido import Consulta_Pedido
 
@@ -62,4 +61,4 @@ def atender_pedido():
         item = tview.selection()[0]
         detalhes_pedido(tview.item(item, option='values')[0])
         
-    Button(atender_pedido, text="Detalhar Pedido",anchor="w", command=seleciona_produto).grid(row=3, column=1, columnspan=2, padx=10)
+    Button(atender_pedido, text="Detalhar Pedido", command=seleciona_produto).grid(row=3, column=1, columnspan=2, padx=10)

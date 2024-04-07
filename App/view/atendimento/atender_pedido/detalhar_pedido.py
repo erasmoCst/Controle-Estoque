@@ -15,7 +15,6 @@ def preencher_tv(tree, produtos_pedido=None):
             item.dt_entregaprevista.strftime("%d/%m/%Y")
             ))
 
-
 def detalhes_pedido(cd_pedido):
     detalhes_pedido = Toplevel()
     detalhes_pedido.title("Resumo Pedido")
@@ -76,11 +75,11 @@ def detalhes_pedido(cd_pedido):
     preencher_tv(tview, dados_pedido['data'])
 
     def atender_pedido():
-        Consulta_Pedido.baixa_estoque(dados_pedido['data'])   
+        Consulta_Pedido.baixa_estoque(cd_pedido, dados_pedido['data'])   
         showinfo("Atender Pedido", "Pedido atendido com sucesso!")
         detalhes_pedido.destroy()
 
-    Button(detalhes_pedido, text="Atender Pedido", command=atender_pedido, anchor="w").grid(row=7, column=1, columnspan=2, pady=10)
+    Button(detalhes_pedido, text="Atender Pedido", anchor="w", command=atender_pedido).grid(row=7, column=1, columnspan=2, pady=10)
 
     
 

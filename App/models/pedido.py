@@ -93,3 +93,16 @@ class Pedido (Base):
         except Exception as e:
             session.rollback()
             return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
+
+    @classmethod
+    def atualiza_pedido_atendido(self, cd_pedido):
+        try:
+            session.query(Pedido).\
+                    filter(Pedido.cd_pedido == cd_pedido).\
+                    update({Pedido.in_atendido: 'S', Pedido.dt_atendimento: func.sysdate()})
+            session.flush()
+            
+            return {'status': 1, 'data': cd_pedido, 'mensagem': "Pedido Atendido com sucesso!"}
+        except Exception as e:
+            session.rollback()
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao atender Pedido!"}
