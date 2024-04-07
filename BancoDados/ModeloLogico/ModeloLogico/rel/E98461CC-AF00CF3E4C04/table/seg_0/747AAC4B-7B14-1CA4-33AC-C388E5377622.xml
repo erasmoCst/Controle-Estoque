@@ -57,6 +57,29 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="IN_ATENDIDO" id="B39DC678-2FCB-D48D-B385-D2AB86E1110E">
+<createdBy>erasm</createdBy>
+<createdTime>2024-04-07 13:57:39 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<defaultValue>N</defaultValue>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_ATENDIMENTO" id="F54D2D39-0640-F198-EB58-E1F1F19C102A">
+<createdBy>erasm</createdBy>
+<createdTime>2024-04-07 13:57:39 UTC</createdTime>
+<ownerDesignName>ModeloLogico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="3C49F928-8D58-AF7C-8795-9144C05F72E0" name="PEDIDO_PK">

@@ -13,7 +13,6 @@ def preencher_tv(tree):
     for i in tree.get_children():
         tree.delete(i)
         
-
     # Consulta os dados do Banco de dados
     pessoas = session.query(Pessoa, Pessoa.cd_pessoa, Pessoa.nm_pessoa, Pessoa.nr_telefone, Pessoa.nm_email).\
               order_by(Pessoa.nm_pessoa).all()
@@ -27,26 +26,26 @@ def preencher_tv_pessoa_fisica(tree):
         tree.delete(i)
 
     # Consulta os dados do Banco de dados
-    pessoas = session.query(Pessoa_Fisica, Pessoa_Fisica.cd_pessoa_fisica, Pessoa_Fisica.nr_cpf, Pessoa_Fisica.dt_nascimento, Pessoa_Fisica.tp_genero, Pessoa.nm_pessoa, Pessoa.nr_telefone, Pessoa.nm_email).\
-          join(Pessoa, Pessoa_Fisica.cd_pessoa_fisica == Pessoa.cd_pessoa).\
-          order_by(Pessoa_Fisica.cd_pessoa_fisica).all()
+    pessoas = session.query(Pessoa_Fisica, Pessoa_Fisica.cd_pessoa, Pessoa_Fisica.nr_cpf, Pessoa_Fisica.dt_nascimento, Pessoa_Fisica.tp_genero, Pessoa.nm_pessoa, Pessoa.nr_telefone, Pessoa.nm_email).\
+          join(Pessoa, Pessoa_Fisica.cd_pessoa == Pessoa.cd_pessoa).\
+          order_by(Pessoa_Fisica.cd_pessoa).all()
 
     # Adiciona os dados ao TreeView
     for pessoa in pessoas:
-        tree.insert("", "end", values=(pessoa.cd_pessoa_fisica, pessoa.nm_pessoa, pessoa.nr_telefone, pessoa.nm_email))
+        tree.insert("", "end", values=(pessoa.cd_pessoa, pessoa.nm_pessoa, pessoa.nr_telefone, pessoa.nm_email))
     
 def preencher_tv_pessoa_juridica(tree):
     for i in tree.get_children():
         tree.delete(i)
 
     # Consulta os dados do Banco de dados
-    pessoas = session.query(Pessoa_Juridica, Pessoa_Juridica.cd_pessoa_juridica, Pessoa_Juridica.nr_cnpj, Pessoa_Juridica.nm_razaosocial, Pessoa.nm_pessoa, Pessoa.nr_telefone, Pessoa.nm_email).\
-          join(Pessoa, Pessoa_Juridica.cd_pessoa_juridica == Pessoa.cd_pessoa).\
-          order_by(Pessoa_Juridica.cd_pessoa_juridica).all()
+    pessoas = session.query(Pessoa_Juridica, Pessoa_Juridica.cd_pessoa, Pessoa_Juridica.nr_cnpj, Pessoa_Juridica.nm_razaosocial, Pessoa.nm_pessoa, Pessoa.nr_telefone, Pessoa.nm_email).\
+          join(Pessoa, Pessoa_Juridica.cd_pessoa == Pessoa.cd_pessoa).\
+          order_by(Pessoa_Juridica.cd_pessoa).all()
 
     # Adiciona os dados ao TreeView
     for pessoa in pessoas:
-        tree.insert("", "end", values=(pessoa.cd_pessoa_juridica, pessoa.nm_pessoa, pessoa.nr_telefone, pessoa.nm_email))
+        tree.insert("", "end", values=(pessoa.cd_pessoa, pessoa.nm_pessoa, pessoa.nr_telefone, pessoa.nm_email))
     
 
 # Funcao para abrir a janela de listas de produtos
