@@ -33,6 +33,29 @@ class Produto_Pedido (Base):
         return results
     
     @classmethod
+    def busca_detalhes_pedido_por_codigo(self, cd_pedido):
+        try:
+            detalhes_pedido = session.query(
+                Pedido.cd_pedido,
+                Pedido.dt_pedido,
+                Pedido.dt_entregaprevista,
+                Pessoa.cd_pessoa,
+                Pessoa.nm_pessoa,
+                Produto.cd_produto,
+                Produto.nm_produto,
+                Produto.tp_embalagemproduto,
+                Produto_Pedido.qt_produto).\
+                select_from(Pedido).\
+                join(Pessoa, Pessoa.cd_pessoa == Pedido.cd_pessoa).\
+                join(Produto_Pedido, Produto_Pedido.cd_pedido == Pedido.cd_pedido).\
+                join(Produto, Produto.cd_produto == Produto_Pedido.cd_produto).\
+                filter(Pedido.cd_pedido == cd_pedido).\
+                all()
+            return {'status': 1, 'data': detalhes_pedido, 'mensagem': "Detalhes do pedido encontrado!"}
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar detalhes do Pedido!"}
+        
+    @classmethod
     def persiste_produto_pedido(self, cd_pedido, cd_produto, qt_produto):
         try:
             produto_pedido = Produto_Pedido(cd_pedido=cd_pedido, 

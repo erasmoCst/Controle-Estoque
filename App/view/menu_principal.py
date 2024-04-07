@@ -7,7 +7,7 @@ from view.controle_estoque.lista_estoque import lista_produtos_estoque
 from view.controle_estoque.consulta_produto import consultar_produto_estoque
 from view.controle_estoque.altera_locacao import lista_prod_locacao
 
-from view.atendimento.atender_pedido import atender_pedido
+from view.atendimento.atender_pedido.atender_pedido import atender_pedido
 from view.atendimento.lista_pedidos import lista_pedidos
 
 from view.gestao.produto.cadastro_produto import cadastro_produto

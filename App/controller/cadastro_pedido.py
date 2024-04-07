@@ -34,21 +34,3 @@ class Cadastro_Pedido():
         Base.commit()
 
         return {'status': 1, 'data': None, 'mensagem': "Valor total calculado com sucesso."}
-
-    # def cancelar_pedido(pedido):
-    #     Pedido.remove_pedido(pedido['data'].cd_pedido)
-    #     Base.commit()
-    
-    # def consultar_pedido(cd_pedido):
-    #     pedido = Pedido.consulta_pedido(cd_pedido)
-    #     pedido['data'].dt_pedido = datetime.strftime (pedido['data'].dt_pedido, '%d/%m/%Y')
-    #     pedido['data'].dt_entregaprevista = datetime.strftime (pedido['data'].dt_entregaprevista, '%d/%m/%Y')
-        
-    #     return pedido
-    
-    # def consultar_produtos_pedido(cd_pedido):
-    #     produtos = Produto_Pedido.consulta_produtos_pedido(cd_pedido)
-        
-    #     return produtos
-        
-        

@@ -12,7 +12,6 @@ class Produto_Estoque (Base):
     cd_estoque: Mapped[int] = mapped_column(SMALLINT, ForeignKey(Estoque.cd_estoque), nullable=False, primary_key=True) 
     nr_lote: Mapped[str] = mapped_column(VARCHAR(10), nullable=False)
     qt_produtoestoque : Mapped[float] = mapped_column(NUMERIC(7,2), nullable=False) 
-    qt_reservado: Mapped[float] = mapped_column(NUMERIC(7,2), nullable=False)
     dt_validade: Mapped[datetime.date] = mapped_column(DATE, nullable=False)
     dt_produtoestoque: Mapped[datetime] = mapped_column(DATE, nullable=False, default=0)
 
@@ -31,3 +30,29 @@ class Produto_Estoque (Base):
             return {"status": "1", "data": produto_estoque, "mensagem": "Produto consultado com sucesso"}
         except Exception as e: 
             return {"status": "0", "data": e, "mensagem": "Erro ao consultar o produto no estoque"}
+    
+    def busca_produto_estoque_ordenado_dt_validade(cd_produto):
+        try:
+            produto_estoque = session.query(Produto_Estoque).\
+                filter(Produto_Estoque.cd_produto == cd_produto).\
+                order_by(Produto_Estoque.dt_validade).\
+                all()
+            
+            return {"status": "1", "data": produto_estoque, "mensagem": "Produto com sucesso"}
+        except Exception as e: 
+            return {"status": "0", "data": e, "mensagem": "Erro ao consultar o produto no estoque"}
+
+    def remove_produto_estoque(cd_produto, qt_produto):
+        try:
+            produto_estoque = session.query(Produto_Estoque).\
+                filter(Produto_Estoque.cd_produto == cd_produto).\
+                first()
+            
+            if produto_estoque.qt_produtoestoque >= qt_produto:
+                produto_estoque.qt_produtoestoque -= qt_produto
+                session.commit()
+                return {"status": "1", "data": None, "mensagem": "Produto removido do estoque com sucesso"}
+            else:
+                return {"status": "0", "data": None, "mensagem": "Quantidade de produto indisponível no estoque"}
+        except Exception as e: 
+            return {"status": "0", "data": e, "mensagem": "Erro ao remover o produto do estoque"}

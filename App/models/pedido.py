@@ -12,6 +12,7 @@ class Pedido (Base):
     in_atendido: Mapped[str] = mapped_column(CHAR(1), nullable=False, server_default='N') 
     dt_pedido: Mapped[datetime] = mapped_column(DATE, nullable=False, server_default=func.sysdate())
     dt_entregaprevista: Mapped[datetime] = mapped_column(DATE, nullable=False)
+    dt_atendimento: Mapped[datetime] = mapped_column(DATE)
 
     @classmethod
     def busca_todos_pedidos(self):
@@ -39,17 +40,34 @@ class Pedido (Base):
         
         except Exception as e:
             return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedido!"}
+    
+    @classmethod
+    def busca_pedidos_nao_atendidos(self):
+        try:
+            results = session.query(Pedido).filter(Pedido.in_atendido == 'N').all()
+            return {'status': 1, 'data': results, 'mensagem': "Pedidos encontrados!"}
         
-    # @classmethod
-    # def busca_pedidio_nm_cliente(self, nm_cliente):
-    #     results = session.query(Pessoa.nm_pessoa).filter(Pessoa.nm_pessoa.ilike(f'%{nm_cliente}%')).all()
-    #     return results
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedidos!"}
+        
+    @classmethod
+    def busca_pedido_nao_atendido_por_codigo(self, cd_pedido):
+        try:
+            results = session.query(Pedido).filter(Pedido.cd_pedido == cd_pedido, Pedido.in_atendido == 'N').all()
+            return {'status': 1, 'data': results, 'mensagem': "Pedido encontrado!"}
+        
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedido!"}
     
-    # @classmethod
-    # def busca_pedidos_cd_cliente(self, cd_cliente):
-    #     results = session.query(Pedido).filter(Pedido.cd_pessoa == cd_cliente).all()
-    #     return results
-    
+    @classmethod
+    def busca_pedido_nao_atendido_por_codigo_cliente(self, cd_cliente):
+        try:
+            results = session.query(Pedido).filter(Pedido.cd_pessoa == cd_cliente, Pedido.in_atendido == 'N').all()
+            return {'status': 1, 'data': results, 'mensagem': "PedidoS encontradoS!"}
+        
+        except Exception as e:
+            return {'status': 0, 'data': e, 'mensagem': "Erro ao buscar Pedido!"}
+
     @classmethod
     def persiste_pedido(self, cd_cliente, dt_entregaprevista):
         try:
@@ -75,4 +93,3 @@ class Pedido (Base):
         except Exception as e:
             session.rollback()
             return {'status': 0, 'data': e, 'mensagem': "Erro ao cadastrar Pedido!"}
-        
